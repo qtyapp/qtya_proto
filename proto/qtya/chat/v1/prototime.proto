@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+import "google/protobuf/descriptor.proto";
+
+package qtya.chat.v1;
+
+option go_package = "github.com/paalgyula/qtya/pkg/gen/qtya/chat/v1;chatv1";
+
+// ProtoTime utils
+message ProtoTime {
+    uint64 unixmillis = 1;
+}

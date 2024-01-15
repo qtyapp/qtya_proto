@@ -1,0 +1,137 @@
+syntax = "proto3";
+
+import "google/protobuf/descriptor.proto";
+import "qtya/chat/v1/prototime.proto";
+
+package qtya.chat.v1;
+
+option go_package = "github.com/paalgyula/qtya/pkg/gen/qtya/chat/v1;chatv1";
+option (version) = "1.0.0";
+
+extend google.protobuf.FileOptions { string version = 50001; }
+
+extend google.protobuf.EnumValueOptions { optional string string_name = 50000; }
+
+extend google.protobuf.MessageOptions {
+  optional string description = 50002;
+  repeated string usages = 50003;
+}
+
+// UpdateTarget
+enum UpdateTarget {
+  UPDATE_TARGET_UNSPECIFIED = 0 [ deprecated = true ];
+  UPDATE_TARGET_MESSAGE = 1 [ (string_name) = "message" ];
+  UPDATE_TARGET_USER = 2 [ (string_name) = "user" ];
+  UPDATE_TARGET_USER_PRESENCE = 3 [ (string_name) = "presence" ];
+  UPDATE_TARGET_CALL_CONTEXT = 4 [ (string_name) = "call" ];
+}
+
+// MessageType
+enum MessageType {
+  MESSAGE_TYPE_UNSPECIFIED = 0;
+  MESSAGE_TYPE_TEXT = 1 [ (string_name) = "text" ];
+  MESSAGE_TYPE_IMAGE = 2 [ (string_name) = "image" ];
+  MESSAGE_TYPE_VOICE = 3 [ (string_name) = "voice" ];
+  MESSAGE_TYPE_CALL = 4 [ (string_name) = "call" ];
+}
+
+// MessageReaction
+message MessageReaction {
+  string user_id = 1;
+  string emoji = 2;
+  ProtoTime updated_at = 3;
+}
+
+// ChatMessageUpdate
+message ChatMessageUpdate {
+  string message_id = 1;
+  string conversation_id = 2;
+  string message = 3;
+  string sender_id = 4;
+  ProtoTime sent_at = 5;
+  repeated MessageReaction reactions = 6;
+  optional ProtoTime deleted_at = 7;
+  optional string deleted_by = 8;
+}
+
+// ContactUpdate
+message ContactUpdate {
+  string user_id = 1;
+  string name = 2;
+  ProtoTime last_online = 3;
+  optional string picture = 4;
+  string role = 5;
+  optional string tel = 6;
+  optional string city = 7;
+  ProtoTime registered_at = 8;
+}
+
+message ConversaionHeaderMessage {
+  string conversation_id = 1;
+  optional string name = 2;
+  string last_message = 3;
+  ProtoTime last_message_at = 4;
+  bool delivered = 5;
+  optional string profile_picture = 6;
+  repeated string participants = 7;
+}
+
+message UserPresence {
+  string user_id = 1;
+  bool is_online = 2;
+  string status = 3;
+  optional string status_message = 4;
+  optional string status_icon = 5;
+}
+
+message UpdateRequestMessage {
+  repeated string user_ids = 1;
+  repeated string user_presence = 2;
+  repeated string conversations = 3;
+}
+
+message ListConversationsRequest { string user_id = 1; }
+
+message SendMessageRequest {
+  string user_id = 1;
+  string conversation_id = 2;
+  string text = 3;
+  MessageType message_type = 4;
+}
+
+message EventStreamRequest {
+  oneof request {
+    SendMessageRequest send_message_request = 1;
+    UpdateRequestMessage update_request = 2;
+    UserPresence update_presence = 3;
+    ListConversationsRequest conversations_request = 4;
+  }
+}
+
+// ServerUpdateMessage servermessage
+message EventStreamResponse {
+  oneof update {
+    ChatMessageUpdate message_update = 2;
+    ContactUpdate user_update = 3;
+    UserPresence presence_update = 4;
+    ConversaionHeaderMessage conversation_update = 5;
+  }
+}
+
+message AuthenticateRequest {
+  string user_id = 1;
+  string token = 2;
+}
+
+message AuthenticateResponse {
+  bool success = 1;
+  optional string reason = 2;
+}
+
+service ChatService {
+  rpc Authenticate(AuthenticateRequest) returns (AuthenticateResponse) {};
+  // rpc SendMessage(SendMessageRequest) returns (SendMessageResponse) {};
+  // rpc ListConversations(ListConversationsRequest) returns (ListConversationsResponse) {};
+  // ListEvents starts listening to events on the stream channel
+  rpc EventStream(stream EventStreamRequest) returns (stream EventStreamResponse) {};
+}
