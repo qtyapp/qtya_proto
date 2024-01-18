@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+import "google/protobuf/descriptor.proto";
+import "qtya/core/v1/prototime.proto";
+
+option go_package = "github.com/qtyapp/qtya_proto/qtya/core/v1;corev1";
+
+package qtya.core.v1;
+
+message PlatformUser {
+  string id = 1; // xid or uuid
+  string name = 2;
+  string email = 3;
+  string token = 4;
+  ProtoTime registred_at = 5;
+  ProtoTime last_login = 6;
+}

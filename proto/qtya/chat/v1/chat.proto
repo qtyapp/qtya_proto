@@ -1,17 +1,15 @@
 syntax = "proto3";
 
 import "google/protobuf/descriptor.proto";
-import "qtya/chat/v1/prototime.proto";
+import "qtya/core/v1/prototime.proto";
 
 package qtya.chat.v1;
 
-option go_package = "github.com/paalgyula/qtya/pkg/gen/qtya/chat/v1;chatv1";
+option go_package = "github.com/qtyapp/qtya_proto/qtya/chat/v1;chatv1";
 option (version) = "1.0.0";
 
 extend google.protobuf.FileOptions { string version = 50001; }
-
 extend google.protobuf.EnumValueOptions { optional string string_name = 50000; }
-
 extend google.protobuf.MessageOptions {
   optional string description = 50002;
   repeated string usages = 50003;
@@ -39,49 +37,80 @@ enum MessageType {
 message MessageReaction {
   string user_id = 1;
   string emoji = 2;
-  ProtoTime updated_at = 3;
+  qtya.core.v1.ProtoTime updated_at = 3;
 }
 
 // ChatMessageUpdate
-message ChatMessageUpdate {
+message ChatMessage {
   string message_id = 1;
   string conversation_id = 2;
   string message = 3;
   string sender_id = 4;
-  ProtoTime sent_at = 5;
+  qtya.core.v1.ProtoTime sent_at = 5;
   repeated MessageReaction reactions = 6;
-  optional ProtoTime deleted_at = 7;
+  optional qtya.core.v1.ProtoTime deleted_at = 7;
   optional string deleted_by = 8;
+  string message_type = 9;
+  optional qtya.core.v1.ProtoTime seen_at = 10;
+  // TODO: add additional data
 }
 
-// ContactUpdate
-message ContactUpdate {
+// Contact primitive
+message Contact {
   string user_id = 1;
   string name = 2;
-  ProtoTime last_online = 3;
-  optional string picture = 4;
+  string email = 3;
+  optional string profile_picture = 4;
   string role = 5;
   optional string tel = 6;
   optional string city = 7;
-  ProtoTime registered_at = 8;
+  qtya.core.v1.ProtoTime registered_at = 8;
+  qtya.core.v1.ProtoTime last_online = 9;
+  optional string qtya_id = 10;
 }
 
-message ConversaionHeaderMessage {
+// ReadMarker
+message ReadMarker {
+  // User read marker
+  string user_id = 1;
+  // Position of the marker
+  string message_id = 2;
+}
+
+message Conversation {
+  // Id of the conversation
   string conversation_id = 1;
+  // Name of the conversation, the default name is the chat partner
   optional string name = 2;
+  // Last sent message
   string last_message = 3;
-  ProtoTime last_message_at = 4;
+  // Last message delivery time
+  qtya.core.v1.ProtoTime last_message_at = 4;
+  // Is this delivered to the client (requested at least once)
   bool delivered = 5;
-  optional string profile_picture = 6;
+  // Picture of the conversation
+  optional string custom_picture_url = 6;
+  // UserID list of the members
   repeated string participants = 7;
+  // Read markers
+  repeated ReadMarker read_markers = 8;
+  // Unreaded count
+  uint32 unreaded = 10;
 }
 
 message UserPresence {
+  // ID of the user
   string user_id = 1;
+  // Is online or not
   bool is_online = 2;
+  // Status message (online/away/in-call)
   string status = 3;
+  // Status message
   optional string status_message = 4;
+  // Status icon (emoji or :smile: pre-defined emoji)
   optional string status_icon = 5;
+  // Last online time
+  qtya.core.v1.ProtoTime last_online_at = 6;
 }
 
 message UpdateRequestMessage {
@@ -99,39 +128,70 @@ message SendMessageRequest {
   MessageType message_type = 4;
 }
 
+message UpdateReadMarkerRequest {
+  string conversation_id = 1;
+  string last_message_id = 2;
+}
+
+// UpdateConversationRequest 
+message UpdateConversationRequest {
+  string conversation_id = 1;
+  optional string from = 2;
+  uint32 limit = 3;
+}
+
+message SelfUpdateResponse {
+  Contact my_profile = 1;
+  UserPresence my_presence =  2;
+}
+
+message NotificationUpdate {
+  uint32 notification_count = 1;
+  uint32 missed_calls = 2;
+  uint32 unreaded_messages = 3;
+  uint32 invitations = 4;
+}
+
+message ChatMessageUpdateResponse {
+  repeated ChatMessage messages = 1;
+  bool is_new = 2;
+}
+
+// EventStreamRequest ...
 message EventStreamRequest {
   oneof request {
     SendMessageRequest send_message_request = 1;
     UpdateRequestMessage update_request = 2;
     UserPresence update_presence = 3;
     ListConversationsRequest conversations_request = 4;
+    UpdateConversationRequest update_conversation_request = 5;
   }
 }
 
 // ServerUpdateMessage servermessage
 message EventStreamResponse {
   oneof update {
-    ChatMessageUpdate message_update = 2;
-    ContactUpdate user_update = 3;
+    ChatMessageUpdateResponse message_update = 2;
+    Contact contact_update = 3;
     UserPresence presence_update = 4;
-    ConversaionHeaderMessage conversation_update = 5;
+    Conversation conversation_update = 5;
+    SelfUpdateResponse self_update = 6;
+    NotificationUpdate notification_update = 7;
   }
 }
 
-message AuthenticateRequest {
-  string user_id = 1;
-  string token = 2;
-}
+// AuthenticateRequest
+message AuthenticateRequest { optional string token = 2; }
 
+// AuthenticateResponse
 message AuthenticateResponse {
   bool success = 1;
   optional string reason = 2;
 }
 
+// ChatService
 service ChatService {
   rpc Authenticate(AuthenticateRequest) returns (AuthenticateResponse) {};
-  // rpc SendMessage(SendMessageRequest) returns (SendMessageResponse) {};
-  // rpc ListConversations(ListConversationsRequest) returns (ListConversationsResponse) {};
-  // ListEvents starts listening to events on the stream channel
-  rpc EventStream(stream EventStreamRequest) returns (stream EventStreamResponse) {};
+  rpc EventStream(stream EventStreamRequest)
+      returns (stream EventStreamResponse) {};
 }

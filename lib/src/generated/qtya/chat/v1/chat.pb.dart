@@ -13,8 +13,8 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
+import '../../core/v1/prototime.pb.dart' as $2;
 import 'chat.pbenum.dart';
-import 'prototime.pb.dart' as $1;
 
 export 'chat.pbenum.dart';
 
@@ -23,7 +23,7 @@ class MessageReaction extends $pb.GeneratedMessage {
   factory MessageReaction({
     $core.String? userId,
     $core.String? emoji,
-    $1.ProtoTime? updatedAt,
+    $2.ProtoTime? updatedAt,
   }) {
     final $result = create();
     if (userId != null) {
@@ -44,7 +44,7 @@ class MessageReaction extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'MessageReaction', package: const $pb.PackageName(_omitMessageNames ? '' : 'qtya.chat.v1'), createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'userId')
     ..aOS(2, _omitFieldNames ? '' : 'emoji')
-    ..aOM<$1.ProtoTime>(3, _omitFieldNames ? '' : 'updatedAt', subBuilder: $1.ProtoTime.create)
+    ..aOM<$2.ProtoTime>(3, _omitFieldNames ? '' : 'updatedAt', subBuilder: $2.ProtoTime.create)
     ..hasRequiredFields = false
   ;
 
@@ -88,28 +88,30 @@ class MessageReaction extends $pb.GeneratedMessage {
   void clearEmoji() => clearField(2);
 
   @$pb.TagNumber(3)
-  $1.ProtoTime get updatedAt => $_getN(2);
+  $2.ProtoTime get updatedAt => $_getN(2);
   @$pb.TagNumber(3)
-  set updatedAt($1.ProtoTime v) { setField(3, v); }
+  set updatedAt($2.ProtoTime v) { setField(3, v); }
   @$pb.TagNumber(3)
   $core.bool hasUpdatedAt() => $_has(2);
   @$pb.TagNumber(3)
   void clearUpdatedAt() => clearField(3);
   @$pb.TagNumber(3)
-  $1.ProtoTime ensureUpdatedAt() => $_ensure(2);
+  $2.ProtoTime ensureUpdatedAt() => $_ensure(2);
 }
 
 /// ChatMessageUpdate
-class ChatMessageUpdate extends $pb.GeneratedMessage {
-  factory ChatMessageUpdate({
+class ChatMessage extends $pb.GeneratedMessage {
+  factory ChatMessage({
     $core.String? messageId,
     $core.String? conversationId,
     $core.String? message,
     $core.String? senderId,
-    $1.ProtoTime? sentAt,
+    $2.ProtoTime? sentAt,
     $core.Iterable<MessageReaction>? reactions,
-    $1.ProtoTime? deletedAt,
+    $2.ProtoTime? deletedAt,
     $core.String? deletedBy,
+    $core.String? messageType,
+    $2.ProtoTime? seenAt,
   }) {
     final $result = create();
     if (messageId != null) {
@@ -136,21 +138,29 @@ class ChatMessageUpdate extends $pb.GeneratedMessage {
     if (deletedBy != null) {
       $result.deletedBy = deletedBy;
     }
+    if (messageType != null) {
+      $result.messageType = messageType;
+    }
+    if (seenAt != null) {
+      $result.seenAt = seenAt;
+    }
     return $result;
   }
-  ChatMessageUpdate._() : super();
-  factory ChatMessageUpdate.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory ChatMessageUpdate.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  ChatMessage._() : super();
+  factory ChatMessage.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory ChatMessage.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'ChatMessageUpdate', package: const $pb.PackageName(_omitMessageNames ? '' : 'qtya.chat.v1'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'ChatMessage', package: const $pb.PackageName(_omitMessageNames ? '' : 'qtya.chat.v1'), createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'messageId')
     ..aOS(2, _omitFieldNames ? '' : 'conversationId')
     ..aOS(3, _omitFieldNames ? '' : 'message')
     ..aOS(4, _omitFieldNames ? '' : 'senderId')
-    ..aOM<$1.ProtoTime>(5, _omitFieldNames ? '' : 'sentAt', subBuilder: $1.ProtoTime.create)
+    ..aOM<$2.ProtoTime>(5, _omitFieldNames ? '' : 'sentAt', subBuilder: $2.ProtoTime.create)
     ..pc<MessageReaction>(6, _omitFieldNames ? '' : 'reactions', $pb.PbFieldType.PM, subBuilder: MessageReaction.create)
-    ..aOM<$1.ProtoTime>(7, _omitFieldNames ? '' : 'deletedAt', subBuilder: $1.ProtoTime.create)
+    ..aOM<$2.ProtoTime>(7, _omitFieldNames ? '' : 'deletedAt', subBuilder: $2.ProtoTime.create)
     ..aOS(8, _omitFieldNames ? '' : 'deletedBy')
+    ..aOS(9, _omitFieldNames ? '' : 'messageType')
+    ..aOM<$2.ProtoTime>(10, _omitFieldNames ? '' : 'seenAt', subBuilder: $2.ProtoTime.create)
     ..hasRequiredFields = false
   ;
 
@@ -158,22 +168,22 @@ class ChatMessageUpdate extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
   'Will be removed in next major version')
-  ChatMessageUpdate clone() => ChatMessageUpdate()..mergeFromMessage(this);
+  ChatMessage clone() => ChatMessage()..mergeFromMessage(this);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  ChatMessageUpdate copyWith(void Function(ChatMessageUpdate) updates) => super.copyWith((message) => updates(message as ChatMessageUpdate)) as ChatMessageUpdate;
+  ChatMessage copyWith(void Function(ChatMessage) updates) => super.copyWith((message) => updates(message as ChatMessage)) as ChatMessage;
 
   $pb.BuilderInfo get info_ => _i;
 
   @$core.pragma('dart2js:noInline')
-  static ChatMessageUpdate create() => ChatMessageUpdate._();
-  ChatMessageUpdate createEmptyInstance() => create();
-  static $pb.PbList<ChatMessageUpdate> createRepeated() => $pb.PbList<ChatMessageUpdate>();
+  static ChatMessage create() => ChatMessage._();
+  ChatMessage createEmptyInstance() => create();
+  static $pb.PbList<ChatMessage> createRepeated() => $pb.PbList<ChatMessage>();
   @$core.pragma('dart2js:noInline')
-  static ChatMessageUpdate getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<ChatMessageUpdate>(create);
-  static ChatMessageUpdate? _defaultInstance;
+  static ChatMessage getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<ChatMessage>(create);
+  static ChatMessage? _defaultInstance;
 
   @$pb.TagNumber(1)
   $core.String get messageId => $_getSZ(0);
@@ -212,29 +222,29 @@ class ChatMessageUpdate extends $pb.GeneratedMessage {
   void clearSenderId() => clearField(4);
 
   @$pb.TagNumber(5)
-  $1.ProtoTime get sentAt => $_getN(4);
+  $2.ProtoTime get sentAt => $_getN(4);
   @$pb.TagNumber(5)
-  set sentAt($1.ProtoTime v) { setField(5, v); }
+  set sentAt($2.ProtoTime v) { setField(5, v); }
   @$pb.TagNumber(5)
   $core.bool hasSentAt() => $_has(4);
   @$pb.TagNumber(5)
   void clearSentAt() => clearField(5);
   @$pb.TagNumber(5)
-  $1.ProtoTime ensureSentAt() => $_ensure(4);
+  $2.ProtoTime ensureSentAt() => $_ensure(4);
 
   @$pb.TagNumber(6)
   $core.List<MessageReaction> get reactions => $_getList(5);
 
   @$pb.TagNumber(7)
-  $1.ProtoTime get deletedAt => $_getN(6);
+  $2.ProtoTime get deletedAt => $_getN(6);
   @$pb.TagNumber(7)
-  set deletedAt($1.ProtoTime v) { setField(7, v); }
+  set deletedAt($2.ProtoTime v) { setField(7, v); }
   @$pb.TagNumber(7)
   $core.bool hasDeletedAt() => $_has(6);
   @$pb.TagNumber(7)
   void clearDeletedAt() => clearField(7);
   @$pb.TagNumber(7)
-  $1.ProtoTime ensureDeletedAt() => $_ensure(6);
+  $2.ProtoTime ensureDeletedAt() => $_ensure(6);
 
   @$pb.TagNumber(8)
   $core.String get deletedBy => $_getSZ(7);
@@ -244,19 +254,41 @@ class ChatMessageUpdate extends $pb.GeneratedMessage {
   $core.bool hasDeletedBy() => $_has(7);
   @$pb.TagNumber(8)
   void clearDeletedBy() => clearField(8);
+
+  @$pb.TagNumber(9)
+  $core.String get messageType => $_getSZ(8);
+  @$pb.TagNumber(9)
+  set messageType($core.String v) { $_setString(8, v); }
+  @$pb.TagNumber(9)
+  $core.bool hasMessageType() => $_has(8);
+  @$pb.TagNumber(9)
+  void clearMessageType() => clearField(9);
+
+  @$pb.TagNumber(10)
+  $2.ProtoTime get seenAt => $_getN(9);
+  @$pb.TagNumber(10)
+  set seenAt($2.ProtoTime v) { setField(10, v); }
+  @$pb.TagNumber(10)
+  $core.bool hasSeenAt() => $_has(9);
+  @$pb.TagNumber(10)
+  void clearSeenAt() => clearField(10);
+  @$pb.TagNumber(10)
+  $2.ProtoTime ensureSeenAt() => $_ensure(9);
 }
 
-/// ContactUpdate
-class ContactUpdate extends $pb.GeneratedMessage {
-  factory ContactUpdate({
+/// Contact primitive
+class Contact extends $pb.GeneratedMessage {
+  factory Contact({
     $core.String? userId,
     $core.String? name,
-    $1.ProtoTime? lastOnline,
-    $core.String? picture,
+    $core.String? email,
+    $core.String? profilePicture,
     $core.String? role,
     $core.String? tel,
     $core.String? city,
-    $1.ProtoTime? registeredAt,
+    $2.ProtoTime? registeredAt,
+    $2.ProtoTime? lastOnline,
+    $core.String? qtyaId,
   }) {
     final $result = create();
     if (userId != null) {
@@ -265,11 +297,11 @@ class ContactUpdate extends $pb.GeneratedMessage {
     if (name != null) {
       $result.name = name;
     }
-    if (lastOnline != null) {
-      $result.lastOnline = lastOnline;
+    if (email != null) {
+      $result.email = email;
     }
-    if (picture != null) {
-      $result.picture = picture;
+    if (profilePicture != null) {
+      $result.profilePicture = profilePicture;
     }
     if (role != null) {
       $result.role = role;
@@ -283,21 +315,29 @@ class ContactUpdate extends $pb.GeneratedMessage {
     if (registeredAt != null) {
       $result.registeredAt = registeredAt;
     }
+    if (lastOnline != null) {
+      $result.lastOnline = lastOnline;
+    }
+    if (qtyaId != null) {
+      $result.qtyaId = qtyaId;
+    }
     return $result;
   }
-  ContactUpdate._() : super();
-  factory ContactUpdate.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory ContactUpdate.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  Contact._() : super();
+  factory Contact.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory Contact.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'ContactUpdate', package: const $pb.PackageName(_omitMessageNames ? '' : 'qtya.chat.v1'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Contact', package: const $pb.PackageName(_omitMessageNames ? '' : 'qtya.chat.v1'), createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'userId')
     ..aOS(2, _omitFieldNames ? '' : 'name')
-    ..aOM<$1.ProtoTime>(3, _omitFieldNames ? '' : 'lastOnline', subBuilder: $1.ProtoTime.create)
-    ..aOS(4, _omitFieldNames ? '' : 'picture')
+    ..aOS(3, _omitFieldNames ? '' : 'email')
+    ..aOS(4, _omitFieldNames ? '' : 'profilePicture')
     ..aOS(5, _omitFieldNames ? '' : 'role')
     ..aOS(6, _omitFieldNames ? '' : 'tel')
     ..aOS(7, _omitFieldNames ? '' : 'city')
-    ..aOM<$1.ProtoTime>(8, _omitFieldNames ? '' : 'registeredAt', subBuilder: $1.ProtoTime.create)
+    ..aOM<$2.ProtoTime>(8, _omitFieldNames ? '' : 'registeredAt', subBuilder: $2.ProtoTime.create)
+    ..aOM<$2.ProtoTime>(9, _omitFieldNames ? '' : 'lastOnline', subBuilder: $2.ProtoTime.create)
+    ..aOS(10, _omitFieldNames ? '' : 'qtyaId')
     ..hasRequiredFields = false
   ;
 
@@ -305,22 +345,22 @@ class ContactUpdate extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
   'Will be removed in next major version')
-  ContactUpdate clone() => ContactUpdate()..mergeFromMessage(this);
+  Contact clone() => Contact()..mergeFromMessage(this);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  ContactUpdate copyWith(void Function(ContactUpdate) updates) => super.copyWith((message) => updates(message as ContactUpdate)) as ContactUpdate;
+  Contact copyWith(void Function(Contact) updates) => super.copyWith((message) => updates(message as Contact)) as Contact;
 
   $pb.BuilderInfo get info_ => _i;
 
   @$core.pragma('dart2js:noInline')
-  static ContactUpdate create() => ContactUpdate._();
-  ContactUpdate createEmptyInstance() => create();
-  static $pb.PbList<ContactUpdate> createRepeated() => $pb.PbList<ContactUpdate>();
+  static Contact create() => Contact._();
+  Contact createEmptyInstance() => create();
+  static $pb.PbList<Contact> createRepeated() => $pb.PbList<Contact>();
   @$core.pragma('dart2js:noInline')
-  static ContactUpdate getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<ContactUpdate>(create);
-  static ContactUpdate? _defaultInstance;
+  static Contact getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Contact>(create);
+  static Contact? _defaultInstance;
 
   @$pb.TagNumber(1)
   $core.String get userId => $_getSZ(0);
@@ -341,24 +381,22 @@ class ContactUpdate extends $pb.GeneratedMessage {
   void clearName() => clearField(2);
 
   @$pb.TagNumber(3)
-  $1.ProtoTime get lastOnline => $_getN(2);
+  $core.String get email => $_getSZ(2);
   @$pb.TagNumber(3)
-  set lastOnline($1.ProtoTime v) { setField(3, v); }
+  set email($core.String v) { $_setString(2, v); }
   @$pb.TagNumber(3)
-  $core.bool hasLastOnline() => $_has(2);
+  $core.bool hasEmail() => $_has(2);
   @$pb.TagNumber(3)
-  void clearLastOnline() => clearField(3);
-  @$pb.TagNumber(3)
-  $1.ProtoTime ensureLastOnline() => $_ensure(2);
+  void clearEmail() => clearField(3);
 
   @$pb.TagNumber(4)
-  $core.String get picture => $_getSZ(3);
+  $core.String get profilePicture => $_getSZ(3);
   @$pb.TagNumber(4)
-  set picture($core.String v) { $_setString(3, v); }
+  set profilePicture($core.String v) { $_setString(3, v); }
   @$pb.TagNumber(4)
-  $core.bool hasPicture() => $_has(3);
+  $core.bool hasProfilePicture() => $_has(3);
   @$pb.TagNumber(4)
-  void clearPicture() => clearField(4);
+  void clearProfilePicture() => clearField(4);
 
   @$pb.TagNumber(5)
   $core.String get role => $_getSZ(4);
@@ -388,26 +426,115 @@ class ContactUpdate extends $pb.GeneratedMessage {
   void clearCity() => clearField(7);
 
   @$pb.TagNumber(8)
-  $1.ProtoTime get registeredAt => $_getN(7);
+  $2.ProtoTime get registeredAt => $_getN(7);
   @$pb.TagNumber(8)
-  set registeredAt($1.ProtoTime v) { setField(8, v); }
+  set registeredAt($2.ProtoTime v) { setField(8, v); }
   @$pb.TagNumber(8)
   $core.bool hasRegisteredAt() => $_has(7);
   @$pb.TagNumber(8)
   void clearRegisteredAt() => clearField(8);
   @$pb.TagNumber(8)
-  $1.ProtoTime ensureRegisteredAt() => $_ensure(7);
+  $2.ProtoTime ensureRegisteredAt() => $_ensure(7);
+
+  @$pb.TagNumber(9)
+  $2.ProtoTime get lastOnline => $_getN(8);
+  @$pb.TagNumber(9)
+  set lastOnline($2.ProtoTime v) { setField(9, v); }
+  @$pb.TagNumber(9)
+  $core.bool hasLastOnline() => $_has(8);
+  @$pb.TagNumber(9)
+  void clearLastOnline() => clearField(9);
+  @$pb.TagNumber(9)
+  $2.ProtoTime ensureLastOnline() => $_ensure(8);
+
+  @$pb.TagNumber(10)
+  $core.String get qtyaId => $_getSZ(9);
+  @$pb.TagNumber(10)
+  set qtyaId($core.String v) { $_setString(9, v); }
+  @$pb.TagNumber(10)
+  $core.bool hasQtyaId() => $_has(9);
+  @$pb.TagNumber(10)
+  void clearQtyaId() => clearField(10);
 }
 
-class ConversaionHeaderMessage extends $pb.GeneratedMessage {
-  factory ConversaionHeaderMessage({
+/// ReadMarker
+class ReadMarker extends $pb.GeneratedMessage {
+  factory ReadMarker({
+    $core.String? userId,
+    $core.String? messageId,
+  }) {
+    final $result = create();
+    if (userId != null) {
+      $result.userId = userId;
+    }
+    if (messageId != null) {
+      $result.messageId = messageId;
+    }
+    return $result;
+  }
+  ReadMarker._() : super();
+  factory ReadMarker.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory ReadMarker.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'ReadMarker', package: const $pb.PackageName(_omitMessageNames ? '' : 'qtya.chat.v1'), createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'userId')
+    ..aOS(2, _omitFieldNames ? '' : 'messageId')
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  ReadMarker clone() => ReadMarker()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  ReadMarker copyWith(void Function(ReadMarker) updates) => super.copyWith((message) => updates(message as ReadMarker)) as ReadMarker;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static ReadMarker create() => ReadMarker._();
+  ReadMarker createEmptyInstance() => create();
+  static $pb.PbList<ReadMarker> createRepeated() => $pb.PbList<ReadMarker>();
+  @$core.pragma('dart2js:noInline')
+  static ReadMarker getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<ReadMarker>(create);
+  static ReadMarker? _defaultInstance;
+
+  /// User read marker
+  @$pb.TagNumber(1)
+  $core.String get userId => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set userId($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasUserId() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearUserId() => clearField(1);
+
+  /// Position of the marker
+  @$pb.TagNumber(2)
+  $core.String get messageId => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set messageId($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasMessageId() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearMessageId() => clearField(2);
+}
+
+class Conversation extends $pb.GeneratedMessage {
+  factory Conversation({
     $core.String? conversationId,
     $core.String? name,
     $core.String? lastMessage,
-    $1.ProtoTime? lastMessageAt,
+    $2.ProtoTime? lastMessageAt,
     $core.bool? delivered,
-    $core.String? profilePicture,
+    $core.String? customPictureUrl,
     $core.Iterable<$core.String>? participants,
+    $core.Iterable<ReadMarker>? readMarkers,
+    $core.int? unreaded,
   }) {
     final $result = create();
     if (conversationId != null) {
@@ -425,26 +552,34 @@ class ConversaionHeaderMessage extends $pb.GeneratedMessage {
     if (delivered != null) {
       $result.delivered = delivered;
     }
-    if (profilePicture != null) {
-      $result.profilePicture = profilePicture;
+    if (customPictureUrl != null) {
+      $result.customPictureUrl = customPictureUrl;
     }
     if (participants != null) {
       $result.participants.addAll(participants);
     }
+    if (readMarkers != null) {
+      $result.readMarkers.addAll(readMarkers);
+    }
+    if (unreaded != null) {
+      $result.unreaded = unreaded;
+    }
     return $result;
   }
-  ConversaionHeaderMessage._() : super();
-  factory ConversaionHeaderMessage.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory ConversaionHeaderMessage.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  Conversation._() : super();
+  factory Conversation.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory Conversation.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'ConversaionHeaderMessage', package: const $pb.PackageName(_omitMessageNames ? '' : 'qtya.chat.v1'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Conversation', package: const $pb.PackageName(_omitMessageNames ? '' : 'qtya.chat.v1'), createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'conversationId')
     ..aOS(2, _omitFieldNames ? '' : 'name')
     ..aOS(3, _omitFieldNames ? '' : 'lastMessage')
-    ..aOM<$1.ProtoTime>(4, _omitFieldNames ? '' : 'lastMessageAt', subBuilder: $1.ProtoTime.create)
+    ..aOM<$2.ProtoTime>(4, _omitFieldNames ? '' : 'lastMessageAt', subBuilder: $2.ProtoTime.create)
     ..aOB(5, _omitFieldNames ? '' : 'delivered')
-    ..aOS(6, _omitFieldNames ? '' : 'profilePicture')
+    ..aOS(6, _omitFieldNames ? '' : 'customPictureUrl')
     ..pPS(7, _omitFieldNames ? '' : 'participants')
+    ..pc<ReadMarker>(8, _omitFieldNames ? '' : 'readMarkers', $pb.PbFieldType.PM, subBuilder: ReadMarker.create)
+    ..a<$core.int>(10, _omitFieldNames ? '' : 'unreaded', $pb.PbFieldType.OU3)
     ..hasRequiredFields = false
   ;
 
@@ -452,23 +587,24 @@ class ConversaionHeaderMessage extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
   'Will be removed in next major version')
-  ConversaionHeaderMessage clone() => ConversaionHeaderMessage()..mergeFromMessage(this);
+  Conversation clone() => Conversation()..mergeFromMessage(this);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  ConversaionHeaderMessage copyWith(void Function(ConversaionHeaderMessage) updates) => super.copyWith((message) => updates(message as ConversaionHeaderMessage)) as ConversaionHeaderMessage;
+  Conversation copyWith(void Function(Conversation) updates) => super.copyWith((message) => updates(message as Conversation)) as Conversation;
 
   $pb.BuilderInfo get info_ => _i;
 
   @$core.pragma('dart2js:noInline')
-  static ConversaionHeaderMessage create() => ConversaionHeaderMessage._();
-  ConversaionHeaderMessage createEmptyInstance() => create();
-  static $pb.PbList<ConversaionHeaderMessage> createRepeated() => $pb.PbList<ConversaionHeaderMessage>();
+  static Conversation create() => Conversation._();
+  Conversation createEmptyInstance() => create();
+  static $pb.PbList<Conversation> createRepeated() => $pb.PbList<Conversation>();
   @$core.pragma('dart2js:noInline')
-  static ConversaionHeaderMessage getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<ConversaionHeaderMessage>(create);
-  static ConversaionHeaderMessage? _defaultInstance;
+  static Conversation getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Conversation>(create);
+  static Conversation? _defaultInstance;
 
+  /// Id of the conversation
   @$pb.TagNumber(1)
   $core.String get conversationId => $_getSZ(0);
   @$pb.TagNumber(1)
@@ -478,6 +614,7 @@ class ConversaionHeaderMessage extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearConversationId() => clearField(1);
 
+  /// Name of the conversation, the default name is the chat partner
   @$pb.TagNumber(2)
   $core.String get name => $_getSZ(1);
   @$pb.TagNumber(2)
@@ -487,6 +624,7 @@ class ConversaionHeaderMessage extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   void clearName() => clearField(2);
 
+  /// Last sent message
   @$pb.TagNumber(3)
   $core.String get lastMessage => $_getSZ(2);
   @$pb.TagNumber(3)
@@ -496,17 +634,19 @@ class ConversaionHeaderMessage extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   void clearLastMessage() => clearField(3);
 
+  /// Last message delivery time
   @$pb.TagNumber(4)
-  $1.ProtoTime get lastMessageAt => $_getN(3);
+  $2.ProtoTime get lastMessageAt => $_getN(3);
   @$pb.TagNumber(4)
-  set lastMessageAt($1.ProtoTime v) { setField(4, v); }
+  set lastMessageAt($2.ProtoTime v) { setField(4, v); }
   @$pb.TagNumber(4)
   $core.bool hasLastMessageAt() => $_has(3);
   @$pb.TagNumber(4)
   void clearLastMessageAt() => clearField(4);
   @$pb.TagNumber(4)
-  $1.ProtoTime ensureLastMessageAt() => $_ensure(3);
+  $2.ProtoTime ensureLastMessageAt() => $_ensure(3);
 
+  /// Is this delivered to the client (requested at least once)
   @$pb.TagNumber(5)
   $core.bool get delivered => $_getBF(4);
   @$pb.TagNumber(5)
@@ -516,17 +656,33 @@ class ConversaionHeaderMessage extends $pb.GeneratedMessage {
   @$pb.TagNumber(5)
   void clearDelivered() => clearField(5);
 
+  /// Picture of the conversation
   @$pb.TagNumber(6)
-  $core.String get profilePicture => $_getSZ(5);
+  $core.String get customPictureUrl => $_getSZ(5);
   @$pb.TagNumber(6)
-  set profilePicture($core.String v) { $_setString(5, v); }
+  set customPictureUrl($core.String v) { $_setString(5, v); }
   @$pb.TagNumber(6)
-  $core.bool hasProfilePicture() => $_has(5);
+  $core.bool hasCustomPictureUrl() => $_has(5);
   @$pb.TagNumber(6)
-  void clearProfilePicture() => clearField(6);
+  void clearCustomPictureUrl() => clearField(6);
 
+  /// UserID list of the members
   @$pb.TagNumber(7)
   $core.List<$core.String> get participants => $_getList(6);
+
+  /// Read markers
+  @$pb.TagNumber(8)
+  $core.List<ReadMarker> get readMarkers => $_getList(7);
+
+  /// Unreaded count
+  @$pb.TagNumber(10)
+  $core.int get unreaded => $_getIZ(8);
+  @$pb.TagNumber(10)
+  set unreaded($core.int v) { $_setUnsignedInt32(8, v); }
+  @$pb.TagNumber(10)
+  $core.bool hasUnreaded() => $_has(8);
+  @$pb.TagNumber(10)
+  void clearUnreaded() => clearField(10);
 }
 
 class UserPresence extends $pb.GeneratedMessage {
@@ -536,6 +692,7 @@ class UserPresence extends $pb.GeneratedMessage {
     $core.String? status,
     $core.String? statusMessage,
     $core.String? statusIcon,
+    $2.ProtoTime? lastOnlineAt,
   }) {
     final $result = create();
     if (userId != null) {
@@ -553,6 +710,9 @@ class UserPresence extends $pb.GeneratedMessage {
     if (statusIcon != null) {
       $result.statusIcon = statusIcon;
     }
+    if (lastOnlineAt != null) {
+      $result.lastOnlineAt = lastOnlineAt;
+    }
     return $result;
   }
   UserPresence._() : super();
@@ -565,6 +725,7 @@ class UserPresence extends $pb.GeneratedMessage {
     ..aOS(3, _omitFieldNames ? '' : 'status')
     ..aOS(4, _omitFieldNames ? '' : 'statusMessage')
     ..aOS(5, _omitFieldNames ? '' : 'statusIcon')
+    ..aOM<$2.ProtoTime>(6, _omitFieldNames ? '' : 'lastOnlineAt', subBuilder: $2.ProtoTime.create)
     ..hasRequiredFields = false
   ;
 
@@ -589,6 +750,7 @@ class UserPresence extends $pb.GeneratedMessage {
   static UserPresence getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<UserPresence>(create);
   static UserPresence? _defaultInstance;
 
+  /// ID of the user
   @$pb.TagNumber(1)
   $core.String get userId => $_getSZ(0);
   @$pb.TagNumber(1)
@@ -598,6 +760,7 @@ class UserPresence extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearUserId() => clearField(1);
 
+  /// Is online or not
   @$pb.TagNumber(2)
   $core.bool get isOnline => $_getBF(1);
   @$pb.TagNumber(2)
@@ -607,6 +770,7 @@ class UserPresence extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   void clearIsOnline() => clearField(2);
 
+  /// Status message (online/away/in-call)
   @$pb.TagNumber(3)
   $core.String get status => $_getSZ(2);
   @$pb.TagNumber(3)
@@ -616,6 +780,7 @@ class UserPresence extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   void clearStatus() => clearField(3);
 
+  /// Status message
   @$pb.TagNumber(4)
   $core.String get statusMessage => $_getSZ(3);
   @$pb.TagNumber(4)
@@ -625,6 +790,7 @@ class UserPresence extends $pb.GeneratedMessage {
   @$pb.TagNumber(4)
   void clearStatusMessage() => clearField(4);
 
+  /// Status icon (emoji or :smile: pre-defined emoji)
   @$pb.TagNumber(5)
   $core.String get statusIcon => $_getSZ(4);
   @$pb.TagNumber(5)
@@ -633,6 +799,18 @@ class UserPresence extends $pb.GeneratedMessage {
   $core.bool hasStatusIcon() => $_has(4);
   @$pb.TagNumber(5)
   void clearStatusIcon() => clearField(5);
+
+  /// Last online time
+  @$pb.TagNumber(6)
+  $2.ProtoTime get lastOnlineAt => $_getN(5);
+  @$pb.TagNumber(6)
+  set lastOnlineAt($2.ProtoTime v) { setField(6, v); }
+  @$pb.TagNumber(6)
+  $core.bool hasLastOnlineAt() => $_has(5);
+  @$pb.TagNumber(6)
+  void clearLastOnlineAt() => clearField(6);
+  @$pb.TagNumber(6)
+  $2.ProtoTime ensureLastOnlineAt() => $_ensure(5);
 }
 
 class UpdateRequestMessage extends $pb.GeneratedMessage {
@@ -837,20 +1015,384 @@ class SendMessageRequest extends $pb.GeneratedMessage {
   void clearMessageType() => clearField(4);
 }
 
+class UpdateReadMarkerRequest extends $pb.GeneratedMessage {
+  factory UpdateReadMarkerRequest({
+    $core.String? conversationId,
+    $core.String? lastMessageId,
+  }) {
+    final $result = create();
+    if (conversationId != null) {
+      $result.conversationId = conversationId;
+    }
+    if (lastMessageId != null) {
+      $result.lastMessageId = lastMessageId;
+    }
+    return $result;
+  }
+  UpdateReadMarkerRequest._() : super();
+  factory UpdateReadMarkerRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory UpdateReadMarkerRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'UpdateReadMarkerRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'qtya.chat.v1'), createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'conversationId')
+    ..aOS(2, _omitFieldNames ? '' : 'lastMessageId')
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  UpdateReadMarkerRequest clone() => UpdateReadMarkerRequest()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  UpdateReadMarkerRequest copyWith(void Function(UpdateReadMarkerRequest) updates) => super.copyWith((message) => updates(message as UpdateReadMarkerRequest)) as UpdateReadMarkerRequest;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static UpdateReadMarkerRequest create() => UpdateReadMarkerRequest._();
+  UpdateReadMarkerRequest createEmptyInstance() => create();
+  static $pb.PbList<UpdateReadMarkerRequest> createRepeated() => $pb.PbList<UpdateReadMarkerRequest>();
+  @$core.pragma('dart2js:noInline')
+  static UpdateReadMarkerRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<UpdateReadMarkerRequest>(create);
+  static UpdateReadMarkerRequest? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get conversationId => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set conversationId($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasConversationId() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearConversationId() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get lastMessageId => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set lastMessageId($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasLastMessageId() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearLastMessageId() => clearField(2);
+}
+
+/// UpdateConversationRequest
+class UpdateConversationRequest extends $pb.GeneratedMessage {
+  factory UpdateConversationRequest({
+    $core.String? conversationId,
+    $core.String? from,
+    $core.int? limit,
+  }) {
+    final $result = create();
+    if (conversationId != null) {
+      $result.conversationId = conversationId;
+    }
+    if (from != null) {
+      $result.from = from;
+    }
+    if (limit != null) {
+      $result.limit = limit;
+    }
+    return $result;
+  }
+  UpdateConversationRequest._() : super();
+  factory UpdateConversationRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory UpdateConversationRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'UpdateConversationRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'qtya.chat.v1'), createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'conversationId')
+    ..aOS(2, _omitFieldNames ? '' : 'from')
+    ..a<$core.int>(3, _omitFieldNames ? '' : 'limit', $pb.PbFieldType.OU3)
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  UpdateConversationRequest clone() => UpdateConversationRequest()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  UpdateConversationRequest copyWith(void Function(UpdateConversationRequest) updates) => super.copyWith((message) => updates(message as UpdateConversationRequest)) as UpdateConversationRequest;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static UpdateConversationRequest create() => UpdateConversationRequest._();
+  UpdateConversationRequest createEmptyInstance() => create();
+  static $pb.PbList<UpdateConversationRequest> createRepeated() => $pb.PbList<UpdateConversationRequest>();
+  @$core.pragma('dart2js:noInline')
+  static UpdateConversationRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<UpdateConversationRequest>(create);
+  static UpdateConversationRequest? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get conversationId => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set conversationId($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasConversationId() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearConversationId() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get from => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set from($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasFrom() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearFrom() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.int get limit => $_getIZ(2);
+  @$pb.TagNumber(3)
+  set limit($core.int v) { $_setUnsignedInt32(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasLimit() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearLimit() => clearField(3);
+}
+
+class SelfUpdateResponse extends $pb.GeneratedMessage {
+  factory SelfUpdateResponse({
+    Contact? myProfile,
+    UserPresence? myPresence,
+  }) {
+    final $result = create();
+    if (myProfile != null) {
+      $result.myProfile = myProfile;
+    }
+    if (myPresence != null) {
+      $result.myPresence = myPresence;
+    }
+    return $result;
+  }
+  SelfUpdateResponse._() : super();
+  factory SelfUpdateResponse.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory SelfUpdateResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'SelfUpdateResponse', package: const $pb.PackageName(_omitMessageNames ? '' : 'qtya.chat.v1'), createEmptyInstance: create)
+    ..aOM<Contact>(1, _omitFieldNames ? '' : 'myProfile', subBuilder: Contact.create)
+    ..aOM<UserPresence>(2, _omitFieldNames ? '' : 'myPresence', subBuilder: UserPresence.create)
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  SelfUpdateResponse clone() => SelfUpdateResponse()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  SelfUpdateResponse copyWith(void Function(SelfUpdateResponse) updates) => super.copyWith((message) => updates(message as SelfUpdateResponse)) as SelfUpdateResponse;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static SelfUpdateResponse create() => SelfUpdateResponse._();
+  SelfUpdateResponse createEmptyInstance() => create();
+  static $pb.PbList<SelfUpdateResponse> createRepeated() => $pb.PbList<SelfUpdateResponse>();
+  @$core.pragma('dart2js:noInline')
+  static SelfUpdateResponse getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<SelfUpdateResponse>(create);
+  static SelfUpdateResponse? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  Contact get myProfile => $_getN(0);
+  @$pb.TagNumber(1)
+  set myProfile(Contact v) { setField(1, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasMyProfile() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearMyProfile() => clearField(1);
+  @$pb.TagNumber(1)
+  Contact ensureMyProfile() => $_ensure(0);
+
+  @$pb.TagNumber(2)
+  UserPresence get myPresence => $_getN(1);
+  @$pb.TagNumber(2)
+  set myPresence(UserPresence v) { setField(2, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasMyPresence() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearMyPresence() => clearField(2);
+  @$pb.TagNumber(2)
+  UserPresence ensureMyPresence() => $_ensure(1);
+}
+
+class NotificationUpdate extends $pb.GeneratedMessage {
+  factory NotificationUpdate({
+    $core.int? notificationCount,
+    $core.int? missedCalls,
+    $core.int? unreadedMessages,
+    $core.int? invitations,
+  }) {
+    final $result = create();
+    if (notificationCount != null) {
+      $result.notificationCount = notificationCount;
+    }
+    if (missedCalls != null) {
+      $result.missedCalls = missedCalls;
+    }
+    if (unreadedMessages != null) {
+      $result.unreadedMessages = unreadedMessages;
+    }
+    if (invitations != null) {
+      $result.invitations = invitations;
+    }
+    return $result;
+  }
+  NotificationUpdate._() : super();
+  factory NotificationUpdate.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory NotificationUpdate.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'NotificationUpdate', package: const $pb.PackageName(_omitMessageNames ? '' : 'qtya.chat.v1'), createEmptyInstance: create)
+    ..a<$core.int>(1, _omitFieldNames ? '' : 'notificationCount', $pb.PbFieldType.OU3)
+    ..a<$core.int>(2, _omitFieldNames ? '' : 'missedCalls', $pb.PbFieldType.OU3)
+    ..a<$core.int>(3, _omitFieldNames ? '' : 'unreadedMessages', $pb.PbFieldType.OU3)
+    ..a<$core.int>(4, _omitFieldNames ? '' : 'invitations', $pb.PbFieldType.OU3)
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  NotificationUpdate clone() => NotificationUpdate()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  NotificationUpdate copyWith(void Function(NotificationUpdate) updates) => super.copyWith((message) => updates(message as NotificationUpdate)) as NotificationUpdate;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static NotificationUpdate create() => NotificationUpdate._();
+  NotificationUpdate createEmptyInstance() => create();
+  static $pb.PbList<NotificationUpdate> createRepeated() => $pb.PbList<NotificationUpdate>();
+  @$core.pragma('dart2js:noInline')
+  static NotificationUpdate getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<NotificationUpdate>(create);
+  static NotificationUpdate? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.int get notificationCount => $_getIZ(0);
+  @$pb.TagNumber(1)
+  set notificationCount($core.int v) { $_setUnsignedInt32(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasNotificationCount() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearNotificationCount() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.int get missedCalls => $_getIZ(1);
+  @$pb.TagNumber(2)
+  set missedCalls($core.int v) { $_setUnsignedInt32(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasMissedCalls() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearMissedCalls() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.int get unreadedMessages => $_getIZ(2);
+  @$pb.TagNumber(3)
+  set unreadedMessages($core.int v) { $_setUnsignedInt32(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasUnreadedMessages() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearUnreadedMessages() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $core.int get invitations => $_getIZ(3);
+  @$pb.TagNumber(4)
+  set invitations($core.int v) { $_setUnsignedInt32(3, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasInvitations() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearInvitations() => clearField(4);
+}
+
+class ChatMessageUpdateResponse extends $pb.GeneratedMessage {
+  factory ChatMessageUpdateResponse({
+    $core.Iterable<ChatMessage>? messages,
+    $core.bool? isNew,
+  }) {
+    final $result = create();
+    if (messages != null) {
+      $result.messages.addAll(messages);
+    }
+    if (isNew != null) {
+      $result.isNew = isNew;
+    }
+    return $result;
+  }
+  ChatMessageUpdateResponse._() : super();
+  factory ChatMessageUpdateResponse.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory ChatMessageUpdateResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'ChatMessageUpdateResponse', package: const $pb.PackageName(_omitMessageNames ? '' : 'qtya.chat.v1'), createEmptyInstance: create)
+    ..pc<ChatMessage>(1, _omitFieldNames ? '' : 'messages', $pb.PbFieldType.PM, subBuilder: ChatMessage.create)
+    ..aOB(2, _omitFieldNames ? '' : 'isNew')
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  ChatMessageUpdateResponse clone() => ChatMessageUpdateResponse()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  ChatMessageUpdateResponse copyWith(void Function(ChatMessageUpdateResponse) updates) => super.copyWith((message) => updates(message as ChatMessageUpdateResponse)) as ChatMessageUpdateResponse;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static ChatMessageUpdateResponse create() => ChatMessageUpdateResponse._();
+  ChatMessageUpdateResponse createEmptyInstance() => create();
+  static $pb.PbList<ChatMessageUpdateResponse> createRepeated() => $pb.PbList<ChatMessageUpdateResponse>();
+  @$core.pragma('dart2js:noInline')
+  static ChatMessageUpdateResponse getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<ChatMessageUpdateResponse>(create);
+  static ChatMessageUpdateResponse? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.List<ChatMessage> get messages => $_getList(0);
+
+  @$pb.TagNumber(2)
+  $core.bool get isNew => $_getBF(1);
+  @$pb.TagNumber(2)
+  set isNew($core.bool v) { $_setBool(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasIsNew() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearIsNew() => clearField(2);
+}
+
 enum EventStreamRequest_Request {
   sendMessageRequest, 
   updateRequest, 
   updatePresence, 
   conversationsRequest, 
+  updateConversationRequest, 
   notSet
 }
 
+/// EventStreamRequest ...
 class EventStreamRequest extends $pb.GeneratedMessage {
   factory EventStreamRequest({
     SendMessageRequest? sendMessageRequest,
     UpdateRequestMessage? updateRequest,
     UserPresence? updatePresence,
     ListConversationsRequest? conversationsRequest,
+    UpdateConversationRequest? updateConversationRequest,
   }) {
     final $result = create();
     if (sendMessageRequest != null) {
@@ -865,6 +1407,9 @@ class EventStreamRequest extends $pb.GeneratedMessage {
     if (conversationsRequest != null) {
       $result.conversationsRequest = conversationsRequest;
     }
+    if (updateConversationRequest != null) {
+      $result.updateConversationRequest = updateConversationRequest;
+    }
     return $result;
   }
   EventStreamRequest._() : super();
@@ -876,14 +1421,16 @@ class EventStreamRequest extends $pb.GeneratedMessage {
     2 : EventStreamRequest_Request.updateRequest,
     3 : EventStreamRequest_Request.updatePresence,
     4 : EventStreamRequest_Request.conversationsRequest,
+    5 : EventStreamRequest_Request.updateConversationRequest,
     0 : EventStreamRequest_Request.notSet
   };
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'EventStreamRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'qtya.chat.v1'), createEmptyInstance: create)
-    ..oo(0, [1, 2, 3, 4])
+    ..oo(0, [1, 2, 3, 4, 5])
     ..aOM<SendMessageRequest>(1, _omitFieldNames ? '' : 'sendMessageRequest', subBuilder: SendMessageRequest.create)
     ..aOM<UpdateRequestMessage>(2, _omitFieldNames ? '' : 'updateRequest', subBuilder: UpdateRequestMessage.create)
     ..aOM<UserPresence>(3, _omitFieldNames ? '' : 'updatePresence', subBuilder: UserPresence.create)
     ..aOM<ListConversationsRequest>(4, _omitFieldNames ? '' : 'conversationsRequest', subBuilder: ListConversationsRequest.create)
+    ..aOM<UpdateConversationRequest>(5, _omitFieldNames ? '' : 'updateConversationRequest', subBuilder: UpdateConversationRequest.create)
     ..hasRequiredFields = false
   ;
 
@@ -954,36 +1501,57 @@ class EventStreamRequest extends $pb.GeneratedMessage {
   void clearConversationsRequest() => clearField(4);
   @$pb.TagNumber(4)
   ListConversationsRequest ensureConversationsRequest() => $_ensure(3);
+
+  @$pb.TagNumber(5)
+  UpdateConversationRequest get updateConversationRequest => $_getN(4);
+  @$pb.TagNumber(5)
+  set updateConversationRequest(UpdateConversationRequest v) { setField(5, v); }
+  @$pb.TagNumber(5)
+  $core.bool hasUpdateConversationRequest() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearUpdateConversationRequest() => clearField(5);
+  @$pb.TagNumber(5)
+  UpdateConversationRequest ensureUpdateConversationRequest() => $_ensure(4);
 }
 
 enum EventStreamResponse_Update {
   messageUpdate, 
-  userUpdate, 
+  contactUpdate, 
   presenceUpdate, 
   conversationUpdate, 
+  selfUpdate, 
+  notificationUpdate, 
   notSet
 }
 
 /// ServerUpdateMessage servermessage
 class EventStreamResponse extends $pb.GeneratedMessage {
   factory EventStreamResponse({
-    ChatMessageUpdate? messageUpdate,
-    ContactUpdate? userUpdate,
+    ChatMessageUpdateResponse? messageUpdate,
+    Contact? contactUpdate,
     UserPresence? presenceUpdate,
-    ConversaionHeaderMessage? conversationUpdate,
+    Conversation? conversationUpdate,
+    SelfUpdateResponse? selfUpdate,
+    NotificationUpdate? notificationUpdate,
   }) {
     final $result = create();
     if (messageUpdate != null) {
       $result.messageUpdate = messageUpdate;
     }
-    if (userUpdate != null) {
-      $result.userUpdate = userUpdate;
+    if (contactUpdate != null) {
+      $result.contactUpdate = contactUpdate;
     }
     if (presenceUpdate != null) {
       $result.presenceUpdate = presenceUpdate;
     }
     if (conversationUpdate != null) {
       $result.conversationUpdate = conversationUpdate;
+    }
+    if (selfUpdate != null) {
+      $result.selfUpdate = selfUpdate;
+    }
+    if (notificationUpdate != null) {
+      $result.notificationUpdate = notificationUpdate;
     }
     return $result;
   }
@@ -993,17 +1561,21 @@ class EventStreamResponse extends $pb.GeneratedMessage {
 
   static const $core.Map<$core.int, EventStreamResponse_Update> _EventStreamResponse_UpdateByTag = {
     2 : EventStreamResponse_Update.messageUpdate,
-    3 : EventStreamResponse_Update.userUpdate,
+    3 : EventStreamResponse_Update.contactUpdate,
     4 : EventStreamResponse_Update.presenceUpdate,
     5 : EventStreamResponse_Update.conversationUpdate,
+    6 : EventStreamResponse_Update.selfUpdate,
+    7 : EventStreamResponse_Update.notificationUpdate,
     0 : EventStreamResponse_Update.notSet
   };
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'EventStreamResponse', package: const $pb.PackageName(_omitMessageNames ? '' : 'qtya.chat.v1'), createEmptyInstance: create)
-    ..oo(0, [2, 3, 4, 5])
-    ..aOM<ChatMessageUpdate>(2, _omitFieldNames ? '' : 'messageUpdate', subBuilder: ChatMessageUpdate.create)
-    ..aOM<ContactUpdate>(3, _omitFieldNames ? '' : 'userUpdate', subBuilder: ContactUpdate.create)
+    ..oo(0, [2, 3, 4, 5, 6, 7])
+    ..aOM<ChatMessageUpdateResponse>(2, _omitFieldNames ? '' : 'messageUpdate', subBuilder: ChatMessageUpdateResponse.create)
+    ..aOM<Contact>(3, _omitFieldNames ? '' : 'contactUpdate', subBuilder: Contact.create)
     ..aOM<UserPresence>(4, _omitFieldNames ? '' : 'presenceUpdate', subBuilder: UserPresence.create)
-    ..aOM<ConversaionHeaderMessage>(5, _omitFieldNames ? '' : 'conversationUpdate', subBuilder: ConversaionHeaderMessage.create)
+    ..aOM<Conversation>(5, _omitFieldNames ? '' : 'conversationUpdate', subBuilder: Conversation.create)
+    ..aOM<SelfUpdateResponse>(6, _omitFieldNames ? '' : 'selfUpdate', subBuilder: SelfUpdateResponse.create)
+    ..aOM<NotificationUpdate>(7, _omitFieldNames ? '' : 'notificationUpdate', subBuilder: NotificationUpdate.create)
     ..hasRequiredFields = false
   ;
 
@@ -1032,26 +1604,26 @@ class EventStreamResponse extends $pb.GeneratedMessage {
   void clearUpdate() => clearField($_whichOneof(0));
 
   @$pb.TagNumber(2)
-  ChatMessageUpdate get messageUpdate => $_getN(0);
+  ChatMessageUpdateResponse get messageUpdate => $_getN(0);
   @$pb.TagNumber(2)
-  set messageUpdate(ChatMessageUpdate v) { setField(2, v); }
+  set messageUpdate(ChatMessageUpdateResponse v) { setField(2, v); }
   @$pb.TagNumber(2)
   $core.bool hasMessageUpdate() => $_has(0);
   @$pb.TagNumber(2)
   void clearMessageUpdate() => clearField(2);
   @$pb.TagNumber(2)
-  ChatMessageUpdate ensureMessageUpdate() => $_ensure(0);
+  ChatMessageUpdateResponse ensureMessageUpdate() => $_ensure(0);
 
   @$pb.TagNumber(3)
-  ContactUpdate get userUpdate => $_getN(1);
+  Contact get contactUpdate => $_getN(1);
   @$pb.TagNumber(3)
-  set userUpdate(ContactUpdate v) { setField(3, v); }
+  set contactUpdate(Contact v) { setField(3, v); }
   @$pb.TagNumber(3)
-  $core.bool hasUserUpdate() => $_has(1);
+  $core.bool hasContactUpdate() => $_has(1);
   @$pb.TagNumber(3)
-  void clearUserUpdate() => clearField(3);
+  void clearContactUpdate() => clearField(3);
   @$pb.TagNumber(3)
-  ContactUpdate ensureUserUpdate() => $_ensure(1);
+  Contact ensureContactUpdate() => $_ensure(1);
 
   @$pb.TagNumber(4)
   UserPresence get presenceUpdate => $_getN(2);
@@ -1065,26 +1637,45 @@ class EventStreamResponse extends $pb.GeneratedMessage {
   UserPresence ensurePresenceUpdate() => $_ensure(2);
 
   @$pb.TagNumber(5)
-  ConversaionHeaderMessage get conversationUpdate => $_getN(3);
+  Conversation get conversationUpdate => $_getN(3);
   @$pb.TagNumber(5)
-  set conversationUpdate(ConversaionHeaderMessage v) { setField(5, v); }
+  set conversationUpdate(Conversation v) { setField(5, v); }
   @$pb.TagNumber(5)
   $core.bool hasConversationUpdate() => $_has(3);
   @$pb.TagNumber(5)
   void clearConversationUpdate() => clearField(5);
   @$pb.TagNumber(5)
-  ConversaionHeaderMessage ensureConversationUpdate() => $_ensure(3);
+  Conversation ensureConversationUpdate() => $_ensure(3);
+
+  @$pb.TagNumber(6)
+  SelfUpdateResponse get selfUpdate => $_getN(4);
+  @$pb.TagNumber(6)
+  set selfUpdate(SelfUpdateResponse v) { setField(6, v); }
+  @$pb.TagNumber(6)
+  $core.bool hasSelfUpdate() => $_has(4);
+  @$pb.TagNumber(6)
+  void clearSelfUpdate() => clearField(6);
+  @$pb.TagNumber(6)
+  SelfUpdateResponse ensureSelfUpdate() => $_ensure(4);
+
+  @$pb.TagNumber(7)
+  NotificationUpdate get notificationUpdate => $_getN(5);
+  @$pb.TagNumber(7)
+  set notificationUpdate(NotificationUpdate v) { setField(7, v); }
+  @$pb.TagNumber(7)
+  $core.bool hasNotificationUpdate() => $_has(5);
+  @$pb.TagNumber(7)
+  void clearNotificationUpdate() => clearField(7);
+  @$pb.TagNumber(7)
+  NotificationUpdate ensureNotificationUpdate() => $_ensure(5);
 }
 
+/// AuthenticateRequest
 class AuthenticateRequest extends $pb.GeneratedMessage {
   factory AuthenticateRequest({
-    $core.String? userId,
     $core.String? token,
   }) {
     final $result = create();
-    if (userId != null) {
-      $result.userId = userId;
-    }
     if (token != null) {
       $result.token = token;
     }
@@ -1095,7 +1686,6 @@ class AuthenticateRequest extends $pb.GeneratedMessage {
   factory AuthenticateRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'AuthenticateRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'qtya.chat.v1'), createEmptyInstance: create)
-    ..aOS(1, _omitFieldNames ? '' : 'userId')
     ..aOS(2, _omitFieldNames ? '' : 'token')
     ..hasRequiredFields = false
   ;
@@ -1121,25 +1711,17 @@ class AuthenticateRequest extends $pb.GeneratedMessage {
   static AuthenticateRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<AuthenticateRequest>(create);
   static AuthenticateRequest? _defaultInstance;
 
-  @$pb.TagNumber(1)
-  $core.String get userId => $_getSZ(0);
-  @$pb.TagNumber(1)
-  set userId($core.String v) { $_setString(0, v); }
-  @$pb.TagNumber(1)
-  $core.bool hasUserId() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearUserId() => clearField(1);
-
   @$pb.TagNumber(2)
-  $core.String get token => $_getSZ(1);
+  $core.String get token => $_getSZ(0);
   @$pb.TagNumber(2)
-  set token($core.String v) { $_setString(1, v); }
+  set token($core.String v) { $_setString(0, v); }
   @$pb.TagNumber(2)
-  $core.bool hasToken() => $_has(1);
+  $core.bool hasToken() => $_has(0);
   @$pb.TagNumber(2)
   void clearToken() => clearField(2);
 }
 
+/// AuthenticateResponse
 class AuthenticateResponse extends $pb.GeneratedMessage {
   factory AuthenticateResponse({
     $core.bool? success,

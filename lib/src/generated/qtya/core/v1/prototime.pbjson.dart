@@ -1,6 +1,6 @@
 //
 //  Generated code. Do not modify.
-//  source: qtya/chat/v1/prototime.proto
+//  source: qtya/core/v1/prototime.proto
 //
 // @dart = 2.12
 

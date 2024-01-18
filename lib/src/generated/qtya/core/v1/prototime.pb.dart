@@ -1,6 +1,6 @@
 //
 //  Generated code. Do not modify.
-//  source: qtya/chat/v1/prototime.proto
+//  source: qtya/core/v1/prototime.proto
 //
 // @dart = 2.12
 
@@ -29,7 +29,7 @@ class ProtoTime extends $pb.GeneratedMessage {
   factory ProtoTime.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory ProtoTime.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'ProtoTime', package: const $pb.PackageName(_omitMessageNames ? '' : 'qtya.chat.v1'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'ProtoTime', package: const $pb.PackageName(_omitMessageNames ? '' : 'qtya.core.v1'), createEmptyInstance: create)
     ..a<$fixnum.Int64>(1, _omitFieldNames ? '' : 'unixmillis', $pb.PbFieldType.OU6, defaultOrMaker: $fixnum.Int64.ZERO)
     ..hasRequiredFields = false
   ;

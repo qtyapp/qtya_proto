@@ -28,9 +28,6 @@ const (
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type ChatServiceClient interface {
 	Authenticate(ctx context.Context, in *AuthenticateRequest, opts ...grpc.CallOption) (*AuthenticateResponse, error)
-	// rpc SendMessage(SendMessageRequest) returns (SendMessageResponse) {};
-	// rpc ListConversations(ListConversationsRequest) returns (ListConversationsResponse) {};
-	// ListEvents starts listening to events on the stream channel
 	EventStream(ctx context.Context, opts ...grpc.CallOption) (ChatService_EventStreamClient, error)
 }
 
@@ -87,9 +84,6 @@ func (x *chatServiceEventStreamClient) Recv() (*EventStreamResponse, error) {
 // for forward compatibility
 type ChatServiceServer interface {
 	Authenticate(context.Context, *AuthenticateRequest) (*AuthenticateResponse, error)
-	// rpc SendMessage(SendMessageRequest) returns (SendMessageResponse) {};
-	// rpc ListConversations(ListConversationsRequest) returns (ListConversationsResponse) {};
-	// ListEvents starts listening to events on the stream channel
 	EventStream(ChatService_EventStreamServer) error
 	mustEmbedUnimplementedChatServiceServer()
 }

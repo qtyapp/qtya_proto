@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+import "google/protobuf/descriptor.proto";
+import "qtya/core/v1/platformuser.proto";
+
+option go_package = "github.com/qtyapp/qtya_proto/qtya/core/v1;corev1";
+
+package qtya.core.v1;
+
+enum AddUserResult {
+    ADD_USER_RESULT_UNSPECIFIED = 0;
+    ADD_USER_RESULT_SUCCESS = 1;
+    ADD_USER_RESULT_EMAIL_ALREADY_EXISTS = 2;
+}
+
+message AddUserRequest {
+    PlatformUser user = 1;
+    bool upsert = 2;
+}
+
+message AddUserResponse {
+    string error_code = 3;
+    string inserted_id = 2;
+}
+
+service ManagementService { rpc AddUser(AddUserRequest) returns (AddUserResponse) {}; }

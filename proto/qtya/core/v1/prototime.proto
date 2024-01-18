@@ -2,9 +2,9 @@ syntax = "proto3";
 
 import "google/protobuf/descriptor.proto";
 
-package qtya.chat.v1;
+package qtya.core.v1;
 
-option go_package = "github.com/paalgyula/qtya/pkg/gen/qtya/chat/v1;chatv1";
+option go_package = "github.com/qtyapp/qtya_proto/qtya/core/v1;corev1";
 
 // ProtoTime utils
 message ProtoTime {
