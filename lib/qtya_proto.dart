@@ -17,12 +17,15 @@ export 'src/generated/qtya/core/v1/user.pb.dart';
 export 'src/generated/qtya/core/v1/user.pbenum.dart';
 export 'src/generated/qtya/core/v1/user.pbjson.dart';
 
+export 'src/generated/rtc/rtc.pb.dart';
+export 'src/generated/rtc/rtc.pbenum.dart';
+export 'src/generated/rtc/rtc.pbgrpc.dart';
+export 'src/generated/rtc/rtc.pbjson.dart';
+
 export 'src/prototime.dart'
     show
         DateTimeProtoExtension,
         ProtoTimeConverter; // Extensions to convert time
 
-export 'src/websocket_transport_connector.dart';
-
-// gRPC stuff
-export 'package:grpc/src/client/common.dart';
+export 'src/realtime.dart';
+export 'src/websocket_channel.dart';

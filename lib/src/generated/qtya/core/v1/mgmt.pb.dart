@@ -13,13 +13,13 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import 'platformuser.pb.dart' as $3;
+import 'platformuser.pb.dart' as $4;
 
 export 'mgmt.pbenum.dart';
 
 class AddUserRequest extends $pb.GeneratedMessage {
   factory AddUserRequest({
-    $3.PlatformUser? user,
+    $4.PlatformUser? user,
     $core.bool? upsert,
   }) {
     final $result = create();
@@ -36,7 +36,7 @@ class AddUserRequest extends $pb.GeneratedMessage {
   factory AddUserRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'AddUserRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'qtya.core.v1'), createEmptyInstance: create)
-    ..aOM<$3.PlatformUser>(1, _omitFieldNames ? '' : 'user', subBuilder: $3.PlatformUser.create)
+    ..aOM<$4.PlatformUser>(1, _omitFieldNames ? '' : 'user', subBuilder: $4.PlatformUser.create)
     ..aOB(2, _omitFieldNames ? '' : 'upsert')
     ..hasRequiredFields = false
   ;
@@ -63,15 +63,15 @@ class AddUserRequest extends $pb.GeneratedMessage {
   static AddUserRequest? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $3.PlatformUser get user => $_getN(0);
+  $4.PlatformUser get user => $_getN(0);
   @$pb.TagNumber(1)
-  set user($3.PlatformUser v) { setField(1, v); }
+  set user($4.PlatformUser v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasUser() => $_has(0);
   @$pb.TagNumber(1)
   void clearUser() => clearField(1);
   @$pb.TagNumber(1)
-  $3.PlatformUser ensureUser() => $_ensure(0);
+  $4.PlatformUser ensureUser() => $_ensure(0);
 
   @$pb.TagNumber(2)
   $core.bool get upsert => $_getBF(1);
