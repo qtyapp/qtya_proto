@@ -1,6 +1,6 @@
 import './generated/qtya/chat/v1/chat.pb.dart';
 
-typedef NewMessageCallback = Function();
+typedef NewMessageCallback = void Function();
 
 abstract interface class RealtimeEventHandler {
   NewMessageCallback? onNewMessage;

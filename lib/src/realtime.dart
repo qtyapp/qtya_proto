@@ -7,6 +7,8 @@ import 'realtime_grpc_web.service.dart';
 export 'realtime_grpc_web.service.dart';
 export 'realtime_grpc.service.dart';
 
+export 'realtime_event_handler.dart';
+
 createRealtime({required RealtimeEventHandler eventHandler}) {
   if (kIsWeb) {
     return RealtimeGRPCHtml(eventHandler: eventHandler);

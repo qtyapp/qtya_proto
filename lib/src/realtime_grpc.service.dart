@@ -11,8 +11,6 @@ enum ConnectionState { connected, connecting, disconected }
 class RealtimeGRPC {
   final RealtimeEventHandler eventHandler;
 
-  VoidCallback? onNewMessage;
-
   late final Stream<ConnectionState> onStateChange;
 
   bool isConnected = false;

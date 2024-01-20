@@ -10,7 +10,7 @@ ClientChannel createChannel(String host, int port, bool secure,
                 certificates: certificates,
                 authority: authority,
                 password: password)
-            : ChannelCredentials.insecure(),
-        idleTimeout: Duration(seconds: 1),
+            : const ChannelCredentials.insecure(),
+        idleTimeout: const Duration(seconds: 1),
       ));
 }
