@@ -1,5 +1,5 @@
 name: qtya_proto
-description: "A new Flutter module project."
+description: "Qty@ gRPC client"
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43

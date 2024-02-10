@@ -13,7 +13,7 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import 'prototime.pb.dart' as $3;
+import 'prototime.pb.dart' as $1;
 
 class PlatformUser extends $pb.GeneratedMessage {
   factory PlatformUser({
@@ -21,8 +21,8 @@ class PlatformUser extends $pb.GeneratedMessage {
     $core.String? name,
     $core.String? email,
     $core.String? token,
-    $3.ProtoTime? registredAt,
-    $3.ProtoTime? lastLogin,
+    $1.ProtoTime? registredAt,
+    $1.ProtoTime? lastLogin,
   }) {
     final $result = create();
     if (id != null) {
@@ -54,8 +54,8 @@ class PlatformUser extends $pb.GeneratedMessage {
     ..aOS(2, _omitFieldNames ? '' : 'name')
     ..aOS(3, _omitFieldNames ? '' : 'email')
     ..aOS(4, _omitFieldNames ? '' : 'token')
-    ..aOM<$3.ProtoTime>(5, _omitFieldNames ? '' : 'registredAt', subBuilder: $3.ProtoTime.create)
-    ..aOM<$3.ProtoTime>(6, _omitFieldNames ? '' : 'lastLogin', subBuilder: $3.ProtoTime.create)
+    ..aOM<$1.ProtoTime>(5, _omitFieldNames ? '' : 'registredAt', subBuilder: $1.ProtoTime.create)
+    ..aOM<$1.ProtoTime>(6, _omitFieldNames ? '' : 'lastLogin', subBuilder: $1.ProtoTime.create)
     ..hasRequiredFields = false
   ;
 
@@ -117,26 +117,26 @@ class PlatformUser extends $pb.GeneratedMessage {
   void clearToken() => clearField(4);
 
   @$pb.TagNumber(5)
-  $3.ProtoTime get registredAt => $_getN(4);
+  $1.ProtoTime get registredAt => $_getN(4);
   @$pb.TagNumber(5)
-  set registredAt($3.ProtoTime v) { setField(5, v); }
+  set registredAt($1.ProtoTime v) { setField(5, v); }
   @$pb.TagNumber(5)
   $core.bool hasRegistredAt() => $_has(4);
   @$pb.TagNumber(5)
   void clearRegistredAt() => clearField(5);
   @$pb.TagNumber(5)
-  $3.ProtoTime ensureRegistredAt() => $_ensure(4);
+  $1.ProtoTime ensureRegistredAt() => $_ensure(4);
 
   @$pb.TagNumber(6)
-  $3.ProtoTime get lastLogin => $_getN(5);
+  $1.ProtoTime get lastLogin => $_getN(5);
   @$pb.TagNumber(6)
-  set lastLogin($3.ProtoTime v) { setField(6, v); }
+  set lastLogin($1.ProtoTime v) { setField(6, v); }
   @$pb.TagNumber(6)
   $core.bool hasLastLogin() => $_has(5);
   @$pb.TagNumber(6)
   void clearLastLogin() => clearField(6);
   @$pb.TagNumber(6)
-  $3.ProtoTime ensureLastLogin() => $_ensure(5);
+  $1.ProtoTime ensureLastLogin() => $_ensure(5);
 }
 
 

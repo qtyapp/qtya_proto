@@ -15,16 +15,16 @@ import 'dart:core' as $core;
 import 'package:grpc/service_api.dart' as $grpc;
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import 'rtc.pb.dart' as $2;
+import 'rtc.pb.dart' as $0;
 
 export 'rtc.pb.dart';
 
 @$pb.GrpcServiceName('rtc.RTCService')
 class RTCServiceClient extends $grpc.Client {
-  static final _$signal = $grpc.ClientMethod<$2.Request, $2.Reply>(
+  static final _$signal = $grpc.ClientMethod<$0.Request, $0.Reply>(
       '/rtc.RTCService/Signal',
-      ($2.Request value) => value.writeToBuffer(),
-      ($core.List<$core.int> value) => $2.Reply.fromBuffer(value));
+      ($0.Request value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $0.Reply.fromBuffer(value));
 
   RTCServiceClient($grpc.ClientChannel channel,
       {$grpc.CallOptions? options,
@@ -32,7 +32,7 @@ class RTCServiceClient extends $grpc.Client {
       : super(channel, options: options,
         interceptors: interceptors);
 
-  $grpc.ResponseStream<$2.Reply> signal($async.Stream<$2.Request> request, {$grpc.CallOptions? options}) {
+  $grpc.ResponseStream<$0.Reply> signal($async.Stream<$0.Request> request, {$grpc.CallOptions? options}) {
     return $createStreamingCall(_$signal, request, options: options);
   }
 }
@@ -42,14 +42,14 @@ abstract class RTCServiceBase extends $grpc.Service {
   $core.String get $name => 'rtc.RTCService';
 
   RTCServiceBase() {
-    $addMethod($grpc.ServiceMethod<$2.Request, $2.Reply>(
+    $addMethod($grpc.ServiceMethod<$0.Request, $0.Reply>(
         'Signal',
         signal,
         true,
         true,
-        ($core.List<$core.int> value) => $2.Request.fromBuffer(value),
-        ($2.Reply value) => value.writeToBuffer()));
+        ($core.List<$core.int> value) => $0.Request.fromBuffer(value),
+        ($0.Reply value) => value.writeToBuffer()));
   }
 
-  $async.Stream<$2.Reply> signal($grpc.ServiceCall call, $async.Stream<$2.Request> request);
+  $async.Stream<$0.Reply> signal($grpc.ServiceCall call, $async.Stream<$0.Request> request);
 }
