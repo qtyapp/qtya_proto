@@ -1,0 +1,160 @@
+syntax = "proto3";
+
+import "google/protobuf/descriptor.proto";
+
+package qtya.detect;
+
+option go_package = "github.com/qtyapp/qtya_proto/qtya/detect";
+
+// Size2D is a 2D size helper object
+message Size2D {
+    // X axis value
+    uint64 x = 1;
+    // Y axis value
+    uint64 y = 2;
+}
+
+// DetectRequest starts a detection on a frame
+message DetectRequest {
+    string detector_type = 1; // HAAR, KERAS, SSD
+    Size2D detect_scene = 2;
+    Size2D original_scene = 3;
+    bool debug = 4;
+    bool use_gpu = 5;
+    uint64 model_workers = 6;
+    uint64 detect_workers = 7;
+    uint64 stream_workers = 8;
+    // Keras model to identify faces
+    string faces_db_model = 9;
+    // detect_type - only new
+    // detect_type - all
+    uint32 detect_type = 10;
+    // Export detected faces
+    bool export_faces = 11;
+    string export_path = 12;
+    // Useful for debugging recognizers
+    bool disable_auto_frames = 13;
+    // Face detection min/max sizes
+    Size2D face_min_size = 14;
+    Size2D face_max_size = 15;
+}
+
+message DetectResult {
+    string session_id = 1;
+    VideoInfo video_info = 2;
+    string detect_info = 3;
+    uint64 frame_id = 4;
+    repeated FaceInfo faces = 5;
+    string source = 6;
+    Size2D resolution = 7;
+}
+
+message VideoInfo {
+    uint64 frame_count = 1;
+    uint64 frame_rate = 2;
+    Size2D resolution = 3;
+    uint64 position = 4;
+    uint64 playback_status = 5;
+}
+
+// Status Request
+message StatusRequest {
+    string session_id = 1;
+}
+
+// StatusUpdate - the status of the session
+message StatusUpdate {
+    string session_id = 1;
+    string video_info = 2;
+    string detect_state = 3;
+    // On recorded video only
+    optional uint64 frame_id = 4;
+    string source = 5;
+    uint32 stream_type = 6;
+}
+
+// FaceInfo is a detected face representation
+message FaceInfo {
+    uint64 frame = 1;
+    uint64 x = 2;
+    uint64 y = 3;
+    uint64 width = 4;
+    uint64 height = 5;
+    uint64 gender = 6;
+    uint64 age = 7;
+    uint64 confidence = 8;
+    string name = 9;
+}
+
+// OpenDeviceResponse is a response to an OpenDeviceRequest
+message OpenDeviceResponse {
+    string session_id = 1;
+    bool success = 2;
+    string error = 3;
+    uint64 position = 4;
+    Size2D resolution = 5;
+    uint32 fps = 6;  
+}
+
+// OpenFileRequest
+message OpenFileRequest {
+    string session_id = 1;
+    string file_path = 2;
+    optional uint64 position = 3;
+}
+
+message OpenLocalCamRequest {
+    string session_id = 1;
+    uint64 cam_id = 2;
+    Size2D resolution = 3;
+    uint32 fps = 4;
+}
+
+message OpenRemoteRequest {
+    string session_id = 1;
+    string url = 2;
+    Size2D resolution = 3;
+    uint32 fps = 4;
+    string username = 5;
+    string password = 6;
+    bool second_stream = 7;
+}
+
+// Open Request opens a file/cam/image
+message OpenStreamRequest {
+    oneof device {
+        OpenFileRequest open_file = 1;
+        OpenLocalCamRequest open_local_cam = 2;
+        OpenRemoteRequest open_remote = 3;
+    }
+}
+
+// VideoControlRequest
+message VideoControlRequest {
+    string action = 1;
+    uint64 position = 2;
+}
+
+// EventStreamResponse
+message DetectRemoteResponse {
+    oneof updates {
+        StatusUpdate status = 1;
+        OpenDeviceResponse open_device_response = 2;
+        DetectResult detect_result = 3;
+    }
+}
+
+// DetectRemoteRequest
+message DetectRemoteRequest {
+    oneof request {
+        OpenStreamRequest open_stream = 1;
+        VideoControlRequest video_control = 2;
+        DetectRequest detect = 3;
+        StatusRequest status = 4;
+    }
+}
+
+// DetectService is a service that can be used to control the qtya cam app.
+service DetectService {
+    rpc DetectRemote(stream DetectRemoteRequest) returns (stream DetectRemoteResponse) {};
+}

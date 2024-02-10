@@ -7,6 +7,12 @@ plugins:
   - plugin: go-grpc
     out: ../
     opt: paths=source_relative,require_unimplemented_servers=true
-  - plugin: buf.build/protocolbuffers/dart:v21.1.2
+  # - plugin: buf.build/protocolbuffers/dart:v21.1.2
+  - plugin: dart
     opt: grpc
     out: ../lib/src/generated
+  # Python compiler
+  # - plugin: buf.build/grpc/python:v1.60.0
+  #   out: ../python
+  # - plugin: buf.build/protocolbuffers/python
+  #   out: ../python
