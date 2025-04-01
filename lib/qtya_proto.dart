@@ -28,5 +28,6 @@ export 'src/prototime.dart'
         ProtoTimeConverter; // Extensions to convert time
 
 export 'src/realtime.dart';
+export 'src/shadow_sso.dart';
 
 export 'src/_channel.dart' if (dart.library.html) 'src/_channel_html.dart';

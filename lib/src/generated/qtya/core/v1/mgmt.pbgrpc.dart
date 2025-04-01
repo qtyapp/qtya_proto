@@ -15,16 +15,16 @@ import 'dart:core' as $core;
 import 'package:grpc/service_api.dart' as $grpc;
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import 'mgmt.pb.dart' as $0;
+import 'mgmt.pb.dart' as $2;
 
 export 'mgmt.pb.dart';
 
 @$pb.GrpcServiceName('qtya.core.v1.ManagementService')
 class ManagementServiceClient extends $grpc.Client {
-  static final _$addUser = $grpc.ClientMethod<$0.AddUserRequest, $0.AddUserResponse>(
+  static final _$addUser = $grpc.ClientMethod<$2.AddUserRequest, $2.AddUserResponse>(
       '/qtya.core.v1.ManagementService/AddUser',
-      ($0.AddUserRequest value) => value.writeToBuffer(),
-      ($core.List<$core.int> value) => $0.AddUserResponse.fromBuffer(value));
+      ($2.AddUserRequest value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $2.AddUserResponse.fromBuffer(value));
 
   ManagementServiceClient($grpc.ClientChannel channel,
       {$grpc.CallOptions? options,
@@ -32,7 +32,7 @@ class ManagementServiceClient extends $grpc.Client {
       : super(channel, options: options,
         interceptors: interceptors);
 
-  $grpc.ResponseFuture<$0.AddUserResponse> addUser($0.AddUserRequest request, {$grpc.CallOptions? options}) {
+  $grpc.ResponseFuture<$2.AddUserResponse> addUser($2.AddUserRequest request, {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$addUser, request, options: options);
   }
 }
@@ -42,18 +42,18 @@ abstract class ManagementServiceBase extends $grpc.Service {
   $core.String get $name => 'qtya.core.v1.ManagementService';
 
   ManagementServiceBase() {
-    $addMethod($grpc.ServiceMethod<$0.AddUserRequest, $0.AddUserResponse>(
+    $addMethod($grpc.ServiceMethod<$2.AddUserRequest, $2.AddUserResponse>(
         'AddUser',
         addUser_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $0.AddUserRequest.fromBuffer(value),
-        ($0.AddUserResponse value) => value.writeToBuffer()));
+        ($core.List<$core.int> value) => $2.AddUserRequest.fromBuffer(value),
+        ($2.AddUserResponse value) => value.writeToBuffer()));
   }
 
-  $async.Future<$0.AddUserResponse> addUser_Pre($grpc.ServiceCall call, $async.Future<$0.AddUserRequest> request) async {
+  $async.Future<$2.AddUserResponse> addUser_Pre($grpc.ServiceCall call, $async.Future<$2.AddUserRequest> request) async {
     return addUser(call, await request);
   }
 
-  $async.Future<$0.AddUserResponse> addUser($grpc.ServiceCall call, $0.AddUserRequest request);
+  $async.Future<$2.AddUserResponse> addUser($grpc.ServiceCall call, $2.AddUserRequest request);
 }

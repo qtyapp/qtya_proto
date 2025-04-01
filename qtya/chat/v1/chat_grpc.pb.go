@@ -19,15 +19,15 @@ import (
 const _ = grpc.SupportPackageIsVersion7
 
 const (
-	ChatService_Authenticate_FullMethodName = "/qtya.chat.v1.ChatService/Authenticate"
-	ChatService_EventStream_FullMethodName  = "/qtya.chat.v1.ChatService/EventStream"
+	ChatService_Register_FullMethodName    = "/qtya.chat.v1.ChatService/Register"
+	ChatService_EventStream_FullMethodName = "/qtya.chat.v1.ChatService/EventStream"
 )
 
 // ChatServiceClient is the client API for ChatService service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type ChatServiceClient interface {
-	Authenticate(ctx context.Context, in *AuthenticateRequest, opts ...grpc.CallOption) (*AuthenticateResponse, error)
+	Register(ctx context.Context, in *RegisterRequest, opts ...grpc.CallOption) (*RegisterResponse, error)
 	EventStream(ctx context.Context, opts ...grpc.CallOption) (ChatService_EventStreamClient, error)
 }
 
@@ -39,9 +39,9 @@ func NewChatServiceClient(cc grpc.ClientConnInterface) ChatServiceClient {
 	return &chatServiceClient{cc}
 }
 
-func (c *chatServiceClient) Authenticate(ctx context.Context, in *AuthenticateRequest, opts ...grpc.CallOption) (*AuthenticateResponse, error) {
-	out := new(AuthenticateResponse)
-	err := c.cc.Invoke(ctx, ChatService_Authenticate_FullMethodName, in, out, opts...)
+func (c *chatServiceClient) Register(ctx context.Context, in *RegisterRequest, opts ...grpc.CallOption) (*RegisterResponse, error) {
+	out := new(RegisterResponse)
+	err := c.cc.Invoke(ctx, ChatService_Register_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -83,7 +83,7 @@ func (x *chatServiceEventStreamClient) Recv() (*EventStreamResponse, error) {
 // All implementations must embed UnimplementedChatServiceServer
 // for forward compatibility
 type ChatServiceServer interface {
-	Authenticate(context.Context, *AuthenticateRequest) (*AuthenticateResponse, error)
+	Register(context.Context, *RegisterRequest) (*RegisterResponse, error)
 	EventStream(ChatService_EventStreamServer) error
 	mustEmbedUnimplementedChatServiceServer()
 }
@@ -92,8 +92,8 @@ type ChatServiceServer interface {
 type UnimplementedChatServiceServer struct {
 }
 
-func (UnimplementedChatServiceServer) Authenticate(context.Context, *AuthenticateRequest) (*AuthenticateResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method Authenticate not implemented")
+func (UnimplementedChatServiceServer) Register(context.Context, *RegisterRequest) (*RegisterResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Register not implemented")
 }
 func (UnimplementedChatServiceServer) EventStream(ChatService_EventStreamServer) error {
 	return status.Errorf(codes.Unimplemented, "method EventStream not implemented")
@@ -111,20 +111,20 @@ func RegisterChatServiceServer(s grpc.ServiceRegistrar, srv ChatServiceServer) {
 	s.RegisterService(&ChatService_ServiceDesc, srv)
 }
 
-func _ChatService_Authenticate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(AuthenticateRequest)
+func _ChatService_Register_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RegisterRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ChatServiceServer).Authenticate(ctx, in)
+		return srv.(ChatServiceServer).Register(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: ChatService_Authenticate_FullMethodName,
+		FullMethod: ChatService_Register_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ChatServiceServer).Authenticate(ctx, req.(*AuthenticateRequest))
+		return srv.(ChatServiceServer).Register(ctx, req.(*RegisterRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -163,8 +163,8 @@ var ChatService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*ChatServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "Authenticate",
-			Handler:    _ChatService_Authenticate_Handler,
+			MethodName: "Register",
+			Handler:    _ChatService_Register_Handler,
 		},
 	},
 	Streams: []grpc.StreamDesc{

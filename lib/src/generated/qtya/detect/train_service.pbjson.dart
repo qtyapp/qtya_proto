@@ -17,14 +17,14 @@ import 'dart:typed_data' as $typed_data;
 const Size2D$json = {
   '1': 'Size2D',
   '2': [
-    {'1': 'width', '3': 1, '4': 1, '5': 4, '10': 'width'},
-    {'1': 'height', '3': 2, '4': 1, '5': 4, '10': 'height'},
+    {'1': 'x', '3': 1, '4': 1, '5': 4, '10': 'x'},
+    {'1': 'y', '3': 2, '4': 1, '5': 4, '10': 'y'},
   ],
 };
 
 /// Descriptor for `Size2D`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List size2DDescriptor = $convert.base64Decode(
-    'CgZTaXplMkQSFAoFd2lkdGgYASABKARSBXdpZHRoEhYKBmhlaWdodBgCIAEoBFIGaGVpZ2h0');
+    'CgZTaXplMkQSDAoBeBgBIAEoBFIBeBIMCgF5GAIgASgEUgF5');
 
 @$core.Deprecated('Use detectRequestDescriptor instead')
 const DetectRequest$json = {

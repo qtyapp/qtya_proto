@@ -1,0 +1,21 @@
+{
+  "name": "qtya-rpc-client",
+  "version": "0.0.1",
+  "license": "Apache-2.0",
+  "main": "./bin/protoc-gen-qtya-rpc-client.js",
+  "author": {
+    "name": "The Protoc Gen Go Team",
+    "url": "https://github.com/protocolbuffers/protoc-gen-go/blob/master/CONTRIBUTORS.txt"
+  },
+  "dependencies": {
+    "@bufbuild/buf": "^1.29.0",
+    "@bufbuild/protobuf": "^1.7.2",
+    "@bufbuild/protoc-gen-es": "^1.7.2"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}

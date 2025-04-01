@@ -6,7 +6,7 @@ from qtya.chat.v1 import chat_pb2 as qtya_dot_chat_dot_v1_dot_chat__pb2
 
 
 class ChatServiceStub(object):
-    """ChatService
+    """ChatService is the chat service for the Qtya.
     """
 
     def __init__(self, channel):
@@ -15,10 +15,10 @@ class ChatServiceStub(object):
         Args:
             channel: A grpc.Channel.
         """
-        self.Authenticate = channel.unary_unary(
-                '/qtya.chat.v1.ChatService/Authenticate',
-                request_serializer=qtya_dot_chat_dot_v1_dot_chat__pb2.AuthenticateRequest.SerializeToString,
-                response_deserializer=qtya_dot_chat_dot_v1_dot_chat__pb2.AuthenticateResponse.FromString,
+        self.Register = channel.unary_unary(
+                '/qtya.chat.v1.ChatService/Register',
+                request_serializer=qtya_dot_chat_dot_v1_dot_chat__pb2.RegisterRequest.SerializeToString,
+                response_deserializer=qtya_dot_chat_dot_v1_dot_chat__pb2.RegisterResponse.FromString,
                 )
         self.EventStream = channel.stream_stream(
                 '/qtya.chat.v1.ChatService/EventStream',
@@ -28,10 +28,10 @@ class ChatServiceStub(object):
 
 
 class ChatServiceServicer(object):
-    """ChatService
+    """ChatService is the chat service for the Qtya.
     """
 
-    def Authenticate(self, request, context):
+    def Register(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -46,10 +46,10 @@ class ChatServiceServicer(object):
 
 def add_ChatServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
-            'Authenticate': grpc.unary_unary_rpc_method_handler(
-                    servicer.Authenticate,
-                    request_deserializer=qtya_dot_chat_dot_v1_dot_chat__pb2.AuthenticateRequest.FromString,
-                    response_serializer=qtya_dot_chat_dot_v1_dot_chat__pb2.AuthenticateResponse.SerializeToString,
+            'Register': grpc.unary_unary_rpc_method_handler(
+                    servicer.Register,
+                    request_deserializer=qtya_dot_chat_dot_v1_dot_chat__pb2.RegisterRequest.FromString,
+                    response_serializer=qtya_dot_chat_dot_v1_dot_chat__pb2.RegisterResponse.SerializeToString,
             ),
             'EventStream': grpc.stream_stream_rpc_method_handler(
                     servicer.EventStream,
@@ -64,11 +64,11 @@ def add_ChatServiceServicer_to_server(servicer, server):
 
  # This class is part of an EXPERIMENTAL API.
 class ChatService(object):
-    """ChatService
+    """ChatService is the chat service for the Qtya.
     """
 
     @staticmethod
-    def Authenticate(request,
+    def Register(request,
             target,
             options=(),
             channel_credentials=None,
@@ -78,9 +78,9 @@ class ChatService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/qtya.chat.v1.ChatService/Authenticate',
-            qtya_dot_chat_dot_v1_dot_chat__pb2.AuthenticateRequest.SerializeToString,
-            qtya_dot_chat_dot_v1_dot_chat__pb2.AuthenticateResponse.FromString,
+        return grpc.experimental.unary_unary(request, target, '/qtya.chat.v1.ChatService/Register',
+            qtya_dot_chat_dot_v1_dot_chat__pb2.RegisterRequest.SerializeToString,
+            qtya_dot_chat_dot_v1_dot_chat__pb2.RegisterResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 

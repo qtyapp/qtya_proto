@@ -15,16 +15,16 @@ import 'dart:core' as $core;
 import 'package:grpc/service_api.dart' as $grpc;
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import 'train_service.pb.dart' as $0;
+import 'train_service.pb.dart' as $3;
 
 export 'train_service.pb.dart';
 
 @$pb.GrpcServiceName('qtya.detect.DetectService')
 class DetectServiceClient extends $grpc.Client {
-  static final _$detectRemote = $grpc.ClientMethod<$0.DetectRemoteRequest, $0.DetectRemoteResponse>(
+  static final _$detectRemote = $grpc.ClientMethod<$3.DetectRemoteRequest, $3.DetectRemoteResponse>(
       '/qtya.detect.DetectService/DetectRemote',
-      ($0.DetectRemoteRequest value) => value.writeToBuffer(),
-      ($core.List<$core.int> value) => $0.DetectRemoteResponse.fromBuffer(value));
+      ($3.DetectRemoteRequest value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $3.DetectRemoteResponse.fromBuffer(value));
 
   DetectServiceClient($grpc.ClientChannel channel,
       {$grpc.CallOptions? options,
@@ -32,7 +32,7 @@ class DetectServiceClient extends $grpc.Client {
       : super(channel, options: options,
         interceptors: interceptors);
 
-  $grpc.ResponseStream<$0.DetectRemoteResponse> detectRemote($async.Stream<$0.DetectRemoteRequest> request, {$grpc.CallOptions? options}) {
+  $grpc.ResponseStream<$3.DetectRemoteResponse> detectRemote($async.Stream<$3.DetectRemoteRequest> request, {$grpc.CallOptions? options}) {
     return $createStreamingCall(_$detectRemote, request, options: options);
   }
 }
@@ -42,14 +42,14 @@ abstract class DetectServiceBase extends $grpc.Service {
   $core.String get $name => 'qtya.detect.DetectService';
 
   DetectServiceBase() {
-    $addMethod($grpc.ServiceMethod<$0.DetectRemoteRequest, $0.DetectRemoteResponse>(
+    $addMethod($grpc.ServiceMethod<$3.DetectRemoteRequest, $3.DetectRemoteResponse>(
         'DetectRemote',
         detectRemote,
         true,
         true,
-        ($core.List<$core.int> value) => $0.DetectRemoteRequest.fromBuffer(value),
-        ($0.DetectRemoteResponse value) => value.writeToBuffer()));
+        ($core.List<$core.int> value) => $3.DetectRemoteRequest.fromBuffer(value),
+        ($3.DetectRemoteResponse value) => value.writeToBuffer()));
   }
 
-  $async.Stream<$0.DetectRemoteResponse> detectRemote($grpc.ServiceCall call, $async.Stream<$0.DetectRemoteRequest> request);
+  $async.Stream<$3.DetectRemoteResponse> detectRemote($grpc.ServiceCall call, $async.Stream<$3.DetectRemoteRequest> request);
 }

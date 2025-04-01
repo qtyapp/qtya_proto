@@ -40,11 +40,16 @@ message MessageReaction {
   qtya.core.v1.ProtoTime updated_at = 3;
 }
 
+message MessageAttachment {
+  string type = 1;
+  bytes payload = 2;
+}
+
 // ChatMessageUpdate
 message ChatMessage {
   string message_id = 1;
   string conversation_id = 2;
-  string message = 3;
+  bytes payload = 3;
   string sender_id = 4;
   qtya.core.v1.ProtoTime sent_at = 5;
   repeated MessageReaction reactions = 6;
@@ -52,34 +57,25 @@ message ChatMessage {
   optional string deleted_by = 8;
   string message_type = 9;
   optional qtya.core.v1.ProtoTime seen_at = 10;
+  repeated MessageAttachment attachments = 11;
   // TODO: add additional data
 }
 
+// TODO: rename it to buddy?
 // Contact primitive
-message Contact {
-  string user_id = 1;
+message Buddy {
+  string id = 1;
   string name = 2;
   string email = 3;
-  optional string profile_picture = 4;
-  string role = 5;
-  optional string tel = 6;
-  optional string city = 7;
+  optional string picture = 4;
   qtya.core.v1.ProtoTime registered_at = 8;
   qtya.core.v1.ProtoTime last_online = 9;
   optional string qtya_id = 10;
 }
 
-// ReadMarker
-message ReadMarker {
-  // User read marker
-  string user_id = 1;
-  // Position of the marker
-  string message_id = 2;
-}
-
 message Conversation {
   // Id of the conversation
-  string conversation_id = 1;
+  string cid = 1;
   // Name of the conversation, the default name is the chat partner
   optional string name = 2;
   // Last sent message
@@ -89,13 +85,9 @@ message Conversation {
   // Is this delivered to the client (requested at least once)
   bool delivered = 5;
   // Picture of the conversation
-  optional string custom_picture_url = 6;
+  optional string picture = 6;
   // UserID list of the members
   repeated string participants = 7;
-  // Read markers
-  repeated ReadMarker read_markers = 8;
-  // Unreaded count
-  uint32 unreaded = 10;
 }
 
 message UserPresence {
@@ -119,19 +111,24 @@ message UpdateRequestMessage {
   repeated string conversations = 3;
 }
 
-message ListConversationsRequest { string user_id = 1; }
+// ListConversationsRequest requests the list of the conversations for the user.
+message ListConversationsRequest { 
+  // Deprecated: the token will provide the actual user ID so this is not necessary anymore.
+  optional string user_id = 1; 
+}
 
+// SendMessageRequest sends a message to the conversation.
 message SendMessageRequest {
-  string user_id = 1;
-  string conversation_id = 2;
-  string text = 3;
-  MessageType message_type = 4;
+  string cid = 1;
+  string payload_type = 2;
+  bytes payload = 3;
 }
 
-message UpdateReadMarkerRequest {
-  string conversation_id = 1;
-  string last_message_id = 2;
-}
+//// UpdateReadMarkerRequest updates the read marker for the conversation.
+//message UpdateReadMarkerRequest {
+//  string conversation_id = 1;
+//  string last_message_id = 2;
+//}
 
 // UpdateConversationRequest 
 message UpdateConversationRequest {
@@ -140,24 +137,44 @@ message UpdateConversationRequest {
   uint32 limit = 3;
 }
 
+// SelfUpdateResponse update profile and presence.
 message SelfUpdateResponse {
-  Contact my_profile = 1;
+  Buddy my_profile = 1;
   UserPresence my_presence =  2;
 }
 
+// NotificationUpdate notification display status update message.
 message NotificationUpdate {
   uint32 notification_count = 1;
   uint32 missed_calls = 2;
-  uint32 unreaded_messages = 3;
+  uint32 unread_messages = 3;
   uint32 invitations = 4;
 }
 
+// TypingState typing indicator for the user when typing.
+message TypingState {
+  string user_id = 1;
+  bool is_typing = 2;
+}
+
+// TypingUpdateResponse typing status update message.
+message TypingUpdateResponse {
+  // ConversationID is the ID of the conversation
+  string conversation_id = 1;
+
+  // States is the typing states of the users
+  repeated TypingState states = 2;
+}
+
+// ChatMessageUpdateResponse chat message update request. This is useful for
+// updating existing messages, or adding new messages to the conversation.
 message ChatMessageUpdateResponse {
   repeated ChatMessage messages = 1;
   bool is_new = 2;
 }
 
-// EventStreamRequest ...
+// EventStreamRequest subscribes the updates for the current user.
+// The client can send the request to the server to get the updates.
 message EventStreamRequest {
   oneof request {
     SendMessageRequest send_message_request = 1;
@@ -165,33 +182,41 @@ message EventStreamRequest {
     UserPresence update_presence = 3;
     ListConversationsRequest conversations_request = 4;
     UpdateConversationRequest update_conversation_request = 5;
+//    UpdateReadMarkerRequest update_read_marker_request = 6;
+    TypingRequest typing_request = 7;
   }
 }
 
-// ServerUpdateMessage servermessage
+// ServerUpdateMessage server message
 message EventStreamResponse {
   oneof update {
     ChatMessageUpdateResponse message_update = 2;
-    Contact contact_update = 3;
+    Buddy contact_update = 3;
     UserPresence presence_update = 4;
     Conversation conversation_update = 5;
     SelfUpdateResponse self_update = 6;
     NotificationUpdate notification_update = 7;
+    TypingUpdateResponse typing_update = 8;
   }
 }
 
-// AuthenticateRequest
-message AuthenticateRequest { optional string token = 2; }
-
-// AuthenticateResponse
-message AuthenticateResponse {
-  bool success = 1;
-  optional string reason = 2;
+// TypingRequest request for the typing status.
+message TypingRequest {
+  string conversation_id = 2;
+  bool is_typing = 3;
 }
 
-// ChatService
+message RegisterRequest {
+  repeated string roles = 1;
+}
+
+message RegisterResponse {
+  string user_id = 1;
+  string token = 2;
+}
+
+// ChatService is the chat service for the Qtya.
 service ChatService {
-  rpc Authenticate(AuthenticateRequest) returns (AuthenticateResponse) {};
-  rpc EventStream(stream EventStreamRequest)
-      returns (stream EventStreamResponse) {};
+  rpc Register(RegisterRequest) returns (RegisterResponse) {};
+  rpc EventStream(stream EventStreamRequest) returns (stream EventStreamResponse) {};
 }

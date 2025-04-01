@@ -1,0 +1,159 @@
+syntax = "proto3";
+
+import "google/protobuf/descriptor.proto";
+import "qtya/core/v1/prototime.proto";
+
+package qtya.chat.v2;
+
+option go_package = "github.com/qtyapp/qtya_proto/qtya/chat/v2;chatv2";
+
+// LoginRequest
+message LoginRequest {
+    string username = 1;
+    string password = 2;
+    optional bool remember_me = 3;
+}
+
+// LoginResponse
+message LoginResponse {
+    string token = 1;
+}
+
+// SendMessageRequest
+message SendMessageRequest {
+    string cid = 1;
+    string payload_type = 2;
+    bytes payload = 3;
+}
+
+// SendMessageResponse
+message SendMessageResponse {
+    string message_id = 1;
+}
+
+message GetMessagesRequest {
+    string cid = 1;
+    int32 limit = 2;
+    string from = 3;
+}
+
+message GetMessagesResponse {
+    repeated ChatMessage messages = 1;
+}
+
+message GetConversationsRequest {
+    string from = 1;
+    int32 limit = 2;
+}
+
+message GetConversationsResponse {
+    repeated Conversation conversations = 1;    
+}
+
+message CreateConversationRequest {
+    repeated string participants = 1;
+}
+
+message CreateConversationResponse {
+    string conversation_id = 1;
+}
+
+message GetUserRequest {
+    string user_id = 1;
+}
+
+message GetUserResponse {
+    User user = 1;
+}
+
+message SearchUsersRequest {
+    string query = 1;
+    int32 limit = 2;
+}
+
+message SearchUsersResponse {
+    repeated User users = 1;
+}
+
+message MessageReadedRequest {
+    string cid = 1;
+    string message_id = 2;
+}
+
+message MessageReadedResponse {
+}
+
+message UpdatePresenceRequest {
+    string presence = 1;
+    string status = 2;
+    optional string status_icon = 3;
+    optional string status_message = 4;
+    optional int64 expires_in = 5;
+}
+
+message UpdatePresenceResponse {
+}
+
+message ChatMessage {
+    string message_id = 1;
+    string conversation_id = 2;
+    bytes payload = 3;
+    string sender_id = 4;
+    qtya.core.v1.ProtoTime sent_at = 5;
+    repeated MessageReaction reactions = 6;
+    optional qtya.core.v1.ProtoTime deleted_at = 7;
+    optional string deleted_by = 8;
+    string message_type = 9;
+    optional qtya.core.v1.ProtoTime seen_at = 10;
+    repeated MessageAttachment attachments = 11;
+}
+
+message Conversation {
+    string conversation_id = 1;
+    repeated string participants = 2;
+    optional string conversation_name = 3;
+    optional qtya.core.v1.ProtoTime created_at = 4;
+    optional qtya.core.v1.ProtoTime updated_at = 5;
+    optional ChatMessage last_message = 6;
+}
+
+message User {
+    string user_id = 1;
+    string username = 2;
+    optional string display_name = 3;
+    optional string avatar_url = 4;
+    optional string presence = 5;
+    optional string status = 6;
+    optional string status_icon = 7;
+    optional string status_message = 8;
+    optional qtya.core.v1.ProtoTime last_seen = 9;
+}
+
+message MessageReaction {
+    string user_id = 1;
+    string reaction = 2;
+    qtya.core.v1.ProtoTime created_at = 3;
+}
+
+message MessageAttachment {
+    string attachment_id = 1;
+    string file_name = 2;
+    string file_type = 3;
+    string file_url = 4;
+    int64 file_size = 5;
+    optional string thumbnail_url = 6;
+    optional string caption = 7;
+}
+
+// ChatService is the chat service for the messenger.
+service ChatService {
+  rpc Login(LoginRequest) returns (LoginResponse) {};
+  rpc SendMessage(SendMessageRequest) returns (SendMessageResponse) {};
+  rpc GetMessages(GetMessagesRequest) returns (GetMessagesResponse) {};
+  rpc GetConversations(GetConversationsRequest) returns (GetConversationsResponse) {};
+  rpc CreateConversation(CreateConversationRequest) returns (CreateConversationResponse) {};
+  rpc GetUser(GetUserRequest) returns (GetUserResponse) {};
+  rpc SearchUsers(SearchUsersRequest) returns (SearchUsersResponse) {};
+  rpc MessageReaded(MessageReadedRequest) returns (MessageReadedResponse) {};
+  rpc UpdatePresence(UpdatePresenceRequest) returns (UpdatePresenceResponse) {};
+}

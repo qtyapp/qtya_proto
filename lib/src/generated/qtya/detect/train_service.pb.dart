@@ -14,18 +14,18 @@ import 'dart:core' as $core;
 import 'package:fixnum/fixnum.dart' as $fixnum;
 import 'package:protobuf/protobuf.dart' as $pb;
 
-/// Size2D
+/// Size2D is a 2D size helper object
 class Size2D extends $pb.GeneratedMessage {
   factory Size2D({
-    $fixnum.Int64? width,
-    $fixnum.Int64? height,
+    $fixnum.Int64? x,
+    $fixnum.Int64? y,
   }) {
     final $result = create();
-    if (width != null) {
-      $result.width = width;
+    if (x != null) {
+      $result.x = x;
     }
-    if (height != null) {
-      $result.height = height;
+    if (y != null) {
+      $result.y = y;
     }
     return $result;
   }
@@ -34,8 +34,8 @@ class Size2D extends $pb.GeneratedMessage {
   factory Size2D.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Size2D', package: const $pb.PackageName(_omitMessageNames ? '' : 'qtya.detect'), createEmptyInstance: create)
-    ..a<$fixnum.Int64>(1, _omitFieldNames ? '' : 'width', $pb.PbFieldType.OU6, defaultOrMaker: $fixnum.Int64.ZERO)
-    ..a<$fixnum.Int64>(2, _omitFieldNames ? '' : 'height', $pb.PbFieldType.OU6, defaultOrMaker: $fixnum.Int64.ZERO)
+    ..a<$fixnum.Int64>(1, _omitFieldNames ? '' : 'x', $pb.PbFieldType.OU6, defaultOrMaker: $fixnum.Int64.ZERO)
+    ..a<$fixnum.Int64>(2, _omitFieldNames ? '' : 'y', $pb.PbFieldType.OU6, defaultOrMaker: $fixnum.Int64.ZERO)
     ..hasRequiredFields = false
   ;
 
@@ -60,23 +60,25 @@ class Size2D extends $pb.GeneratedMessage {
   static Size2D getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Size2D>(create);
   static Size2D? _defaultInstance;
 
+  /// X axis value
   @$pb.TagNumber(1)
-  $fixnum.Int64 get width => $_getI64(0);
+  $fixnum.Int64 get x => $_getI64(0);
   @$pb.TagNumber(1)
-  set width($fixnum.Int64 v) { $_setInt64(0, v); }
+  set x($fixnum.Int64 v) { $_setInt64(0, v); }
   @$pb.TagNumber(1)
-  $core.bool hasWidth() => $_has(0);
+  $core.bool hasX() => $_has(0);
   @$pb.TagNumber(1)
-  void clearWidth() => clearField(1);
+  void clearX() => clearField(1);
 
+  /// Y axis value
   @$pb.TagNumber(2)
-  $fixnum.Int64 get height => $_getI64(1);
+  $fixnum.Int64 get y => $_getI64(1);
   @$pb.TagNumber(2)
-  set height($fixnum.Int64 v) { $_setInt64(1, v); }
+  set y($fixnum.Int64 v) { $_setInt64(1, v); }
   @$pb.TagNumber(2)
-  $core.bool hasHeight() => $_has(1);
+  $core.bool hasY() => $_has(1);
   @$pb.TagNumber(2)
-  void clearHeight() => clearField(2);
+  void clearY() => clearField(2);
 }
 
 /// DetectRequest starts a detection on a frame

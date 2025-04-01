@@ -21,10 +21,10 @@ export 'chat.pb.dart';
 
 @$pb.GrpcServiceName('qtya.chat.v1.ChatService')
 class ChatServiceClient extends $grpc.Client {
-  static final _$authenticate = $grpc.ClientMethod<$0.AuthenticateRequest, $0.AuthenticateResponse>(
-      '/qtya.chat.v1.ChatService/Authenticate',
-      ($0.AuthenticateRequest value) => value.writeToBuffer(),
-      ($core.List<$core.int> value) => $0.AuthenticateResponse.fromBuffer(value));
+  static final _$register = $grpc.ClientMethod<$0.RegisterRequest, $0.RegisterResponse>(
+      '/qtya.chat.v1.ChatService/Register',
+      ($0.RegisterRequest value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $0.RegisterResponse.fromBuffer(value));
   static final _$eventStream = $grpc.ClientMethod<$0.EventStreamRequest, $0.EventStreamResponse>(
       '/qtya.chat.v1.ChatService/EventStream',
       ($0.EventStreamRequest value) => value.writeToBuffer(),
@@ -36,8 +36,8 @@ class ChatServiceClient extends $grpc.Client {
       : super(channel, options: options,
         interceptors: interceptors);
 
-  $grpc.ResponseFuture<$0.AuthenticateResponse> authenticate($0.AuthenticateRequest request, {$grpc.CallOptions? options}) {
-    return $createUnaryCall(_$authenticate, request, options: options);
+  $grpc.ResponseFuture<$0.RegisterResponse> register($0.RegisterRequest request, {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$register, request, options: options);
   }
 
   $grpc.ResponseStream<$0.EventStreamResponse> eventStream($async.Stream<$0.EventStreamRequest> request, {$grpc.CallOptions? options}) {
@@ -50,13 +50,13 @@ abstract class ChatServiceBase extends $grpc.Service {
   $core.String get $name => 'qtya.chat.v1.ChatService';
 
   ChatServiceBase() {
-    $addMethod($grpc.ServiceMethod<$0.AuthenticateRequest, $0.AuthenticateResponse>(
-        'Authenticate',
-        authenticate_Pre,
+    $addMethod($grpc.ServiceMethod<$0.RegisterRequest, $0.RegisterResponse>(
+        'Register',
+        register_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $0.AuthenticateRequest.fromBuffer(value),
-        ($0.AuthenticateResponse value) => value.writeToBuffer()));
+        ($core.List<$core.int> value) => $0.RegisterRequest.fromBuffer(value),
+        ($0.RegisterResponse value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$0.EventStreamRequest, $0.EventStreamResponse>(
         'EventStream',
         eventStream,
@@ -66,10 +66,10 @@ abstract class ChatServiceBase extends $grpc.Service {
         ($0.EventStreamResponse value) => value.writeToBuffer()));
   }
 
-  $async.Future<$0.AuthenticateResponse> authenticate_Pre($grpc.ServiceCall call, $async.Future<$0.AuthenticateRequest> request) async {
-    return authenticate(call, await request);
+  $async.Future<$0.RegisterResponse> register_Pre($grpc.ServiceCall call, $async.Future<$0.RegisterRequest> request) async {
+    return register(call, await request);
   }
 
-  $async.Future<$0.AuthenticateResponse> authenticate($grpc.ServiceCall call, $0.AuthenticateRequest request);
+  $async.Future<$0.RegisterResponse> register($grpc.ServiceCall call, $0.RegisterRequest request);
   $async.Stream<$0.EventStreamResponse> eventStream($grpc.ServiceCall call, $async.Stream<$0.EventStreamRequest> request);
 }
