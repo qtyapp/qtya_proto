@@ -2,6 +2,7 @@ syntax = "proto3";
 
 import "google/protobuf/descriptor.proto";
 import "qtya/core/v1/prototime.proto";
+import "qtya/chat/v2/messages.proto";
 
 package qtya.chat.v2;
 
@@ -92,57 +93,6 @@ message UpdatePresenceRequest {
 }
 
 message UpdatePresenceResponse {
-}
-
-message ChatMessage {
-    string message_id = 1;
-    string conversation_id = 2;
-    bytes payload = 3;
-    string sender_id = 4;
-    qtya.core.v1.ProtoTime sent_at = 5;
-    repeated MessageReaction reactions = 6;
-    optional qtya.core.v1.ProtoTime deleted_at = 7;
-    optional string deleted_by = 8;
-    string message_type = 9;
-    optional qtya.core.v1.ProtoTime seen_at = 10;
-    repeated MessageAttachment attachments = 11;
-}
-
-message Conversation {
-    string conversation_id = 1;
-    repeated string participants = 2;
-    optional string conversation_name = 3;
-    optional qtya.core.v1.ProtoTime created_at = 4;
-    optional qtya.core.v1.ProtoTime updated_at = 5;
-    optional ChatMessage last_message = 6;
-}
-
-message User {
-    string user_id = 1;
-    string username = 2;
-    optional string display_name = 3;
-    optional string avatar_url = 4;
-    optional string presence = 5;
-    optional string status = 6;
-    optional string status_icon = 7;
-    optional string status_message = 8;
-    optional qtya.core.v1.ProtoTime last_seen = 9;
-}
-
-message MessageReaction {
-    string user_id = 1;
-    string reaction = 2;
-    qtya.core.v1.ProtoTime created_at = 3;
-}
-
-message MessageAttachment {
-    string attachment_id = 1;
-    string file_name = 2;
-    string file_type = 3;
-    string file_url = 4;
-    int64 file_size = 5;
-    optional string thumbnail_url = 6;
-    optional string caption = 7;
 }
 
 // ChatService is the chat service for the messenger.

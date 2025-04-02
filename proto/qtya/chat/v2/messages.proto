@@ -1,0 +1,116 @@
+syntax = "proto3";
+
+import "google/protobuf/descriptor.proto";
+import "qtya/core/v1/prototime.proto";
+
+package qtya.chat.v2;
+
+option go_package = "github.com/qtyapp/qtya_proto/qtya/chat/v2;chatv2";
+
+
+message ChatMessage {
+    string message_id = 1;
+    string conversation_id = 2;
+    bytes payload = 3;
+    string sender_id = 4;
+    qtya.core.v1.ProtoTime sent_at = 5;
+    repeated MessageReaction reactions = 6;
+    optional qtya.core.v1.ProtoTime deleted_at = 7;
+    optional string deleted_by = 8;
+    string message_type = 9;
+    optional qtya.core.v1.ProtoTime seen_at = 10;
+    repeated MessageAttachment attachments = 11;
+}
+
+message Conversation {
+    string conversation_id = 1;
+    repeated string participants = 2;
+    optional string conversation_name = 3;
+    optional qtya.core.v1.ProtoTime created_at = 4;
+    optional qtya.core.v1.ProtoTime updated_at = 5;
+    optional ChatMessage last_message = 6;
+}
+
+message User {
+    string user_id = 1;
+    string username = 2;
+    optional string display_name = 3;
+    optional string avatar_url = 4;
+    optional string presence = 5;
+    optional string status = 6;
+    optional string status_icon = 7;
+    optional string status_message = 8;
+    optional qtya.core.v1.ProtoTime last_seen = 9;
+}
+
+message MessageReaction {
+    string user_id = 1;
+    string reaction = 2;
+    qtya.core.v1.ProtoTime created_at = 3;
+}
+
+message MessageAttachment {
+    string attachment_id = 1;
+    string file_name = 2;
+    string file_type = 3;
+    string file_url = 4;
+    int64 file_size = 5;
+    optional string thumbnail_url = 6;
+    optional string caption = 7;
+}
+
+message ChatMessageReceived {
+    ChatMessage message = 1;
+}
+
+message MessageReadedEvent {
+    string cid = 1;
+    string message_id = 2;
+    string user_id = 3;
+    qtya.core.v1.ProtoTime read_at = 4;
+}
+
+message UserPresenceChanged {
+    string user_id = 1;
+    string presence = 2;
+    string status = 3;
+    optional string status_icon = 4;
+    optional string status_message = 5;
+    optional qtya.core.v1.ProtoTime last_seen = 6;
+}
+
+message ConversationCreated {
+    Conversation conversation = 1;
+}
+
+message ConversationUpdated {
+    Conversation conversation = 1;
+}
+
+message UserJoinedConversation {
+    string cid = 1;
+    string user_id = 2;
+    qtya.core.v1.ProtoTime joined_at = 3;
+}
+
+message UserLeftConversation {
+    string cid = 1;
+    string user_id = 2;
+    qtya.core.v1.ProtoTime left_at = 3;
+}
+
+message MessageDeleted {
+    string cid = 1;
+    string message_id = 2;
+    string deleted_by = 3;
+    qtya.core.v1.ProtoTime deleted_at = 4;
+}
+
+message MessageUpdated {
+    ChatMessage message = 1;
+}
+
+message AttachmentUploaded {
+    string cid = 1;
+    ChatMessage message = 2;
+}

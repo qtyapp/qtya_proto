@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+import "google/protobuf/descriptor.proto";
+import "qtya/core/v1/prototime.proto";
+import "qtya/chat/v2/messages.proto";
+
+package qtya.chat.v2;
+
+option go_package = "github.com/qtyapp/qtya_proto/qtya/chat/v2;chatv2";
+
+message ListenEventsRequest {
+    string token = 1;
+}
+
+message ListenEventsResponse {
+    oneof event {
+        ChatMessageReceived chat_message_received = 1;
+        MessageReadedEvent message_readed = 2;
+        UserPresenceChanged user_presence_changed = 3;
+        ConversationCreated conversation_created = 4;
+        ConversationUpdated conversation_updated = 5;
+        UserJoinedConversation user_joined_conversation = 6;
+        UserLeftConversation user_left_conversation = 7;
+        MessageDeleted message_deleted = 8;
+        MessageUpdated message_updated = 9;
+        AttachmentUploaded attachment_uploaded = 10;
+    }
+}
+
+service RealtimeService {
+    rpc ListenEvents(ListenEventsRequest) returns (stream ListenEventsResponse) {}
+}

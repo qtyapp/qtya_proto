@@ -15,44 +15,44 @@ import 'dart:core' as $core;
 import 'package:grpc/service_api.dart' as $grpc;
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import 'room.pb.dart' as $4;
+import 'room.pb.dart' as $5;
 
 export 'room.pb.dart';
 
 @$pb.GrpcServiceName('room.RoomService')
 class RoomServiceClient extends $grpc.Client {
-  static final _$createRoom = $grpc.ClientMethod<$4.CreateRoomRequest, $4.CreateRoomReply>(
+  static final _$createRoom = $grpc.ClientMethod<$5.CreateRoomRequest, $5.CreateRoomReply>(
       '/room.RoomService/CreateRoom',
-      ($4.CreateRoomRequest value) => value.writeToBuffer(),
-      ($core.List<$core.int> value) => $4.CreateRoomReply.fromBuffer(value));
-  static final _$updateRoom = $grpc.ClientMethod<$4.UpdateRoomRequest, $4.UpdateRoomReply>(
+      ($5.CreateRoomRequest value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $5.CreateRoomReply.fromBuffer(value));
+  static final _$updateRoom = $grpc.ClientMethod<$5.UpdateRoomRequest, $5.UpdateRoomReply>(
       '/room.RoomService/UpdateRoom',
-      ($4.UpdateRoomRequest value) => value.writeToBuffer(),
-      ($core.List<$core.int> value) => $4.UpdateRoomReply.fromBuffer(value));
-  static final _$endRoom = $grpc.ClientMethod<$4.EndRoomRequest, $4.EndRoomReply>(
+      ($5.UpdateRoomRequest value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $5.UpdateRoomReply.fromBuffer(value));
+  static final _$endRoom = $grpc.ClientMethod<$5.EndRoomRequest, $5.EndRoomReply>(
       '/room.RoomService/EndRoom',
-      ($4.EndRoomRequest value) => value.writeToBuffer(),
-      ($core.List<$core.int> value) => $4.EndRoomReply.fromBuffer(value));
-  static final _$getRooms = $grpc.ClientMethod<$4.GetRoomsRequest, $4.GetRoomsReply>(
+      ($5.EndRoomRequest value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $5.EndRoomReply.fromBuffer(value));
+  static final _$getRooms = $grpc.ClientMethod<$5.GetRoomsRequest, $5.GetRoomsReply>(
       '/room.RoomService/GetRooms',
-      ($4.GetRoomsRequest value) => value.writeToBuffer(),
-      ($core.List<$core.int> value) => $4.GetRoomsReply.fromBuffer(value));
-  static final _$addPeer = $grpc.ClientMethod<$4.AddPeerRequest, $4.AddPeerReply>(
+      ($5.GetRoomsRequest value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $5.GetRoomsReply.fromBuffer(value));
+  static final _$addPeer = $grpc.ClientMethod<$5.AddPeerRequest, $5.AddPeerReply>(
       '/room.RoomService/AddPeer',
-      ($4.AddPeerRequest value) => value.writeToBuffer(),
-      ($core.List<$core.int> value) => $4.AddPeerReply.fromBuffer(value));
-  static final _$updatePeer = $grpc.ClientMethod<$4.UpdatePeerRequest, $4.UpdatePeerReply>(
+      ($5.AddPeerRequest value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $5.AddPeerReply.fromBuffer(value));
+  static final _$updatePeer = $grpc.ClientMethod<$5.UpdatePeerRequest, $5.UpdatePeerReply>(
       '/room.RoomService/UpdatePeer',
-      ($4.UpdatePeerRequest value) => value.writeToBuffer(),
-      ($core.List<$core.int> value) => $4.UpdatePeerReply.fromBuffer(value));
-  static final _$removePeer = $grpc.ClientMethod<$4.RemovePeerRequest, $4.RemovePeerReply>(
+      ($5.UpdatePeerRequest value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $5.UpdatePeerReply.fromBuffer(value));
+  static final _$removePeer = $grpc.ClientMethod<$5.RemovePeerRequest, $5.RemovePeerReply>(
       '/room.RoomService/RemovePeer',
-      ($4.RemovePeerRequest value) => value.writeToBuffer(),
-      ($core.List<$core.int> value) => $4.RemovePeerReply.fromBuffer(value));
-  static final _$getPeers = $grpc.ClientMethod<$4.GetPeersRequest, $4.GetPeersReply>(
+      ($5.RemovePeerRequest value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $5.RemovePeerReply.fromBuffer(value));
+  static final _$getPeers = $grpc.ClientMethod<$5.GetPeersRequest, $5.GetPeersReply>(
       '/room.RoomService/GetPeers',
-      ($4.GetPeersRequest value) => value.writeToBuffer(),
-      ($core.List<$core.int> value) => $4.GetPeersReply.fromBuffer(value));
+      ($5.GetPeersRequest value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $5.GetPeersReply.fromBuffer(value));
 
   RoomServiceClient($grpc.ClientChannel channel,
       {$grpc.CallOptions? options,
@@ -60,35 +60,35 @@ class RoomServiceClient extends $grpc.Client {
       : super(channel, options: options,
         interceptors: interceptors);
 
-  $grpc.ResponseFuture<$4.CreateRoomReply> createRoom($4.CreateRoomRequest request, {$grpc.CallOptions? options}) {
+  $grpc.ResponseFuture<$5.CreateRoomReply> createRoom($5.CreateRoomRequest request, {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$createRoom, request, options: options);
   }
 
-  $grpc.ResponseFuture<$4.UpdateRoomReply> updateRoom($4.UpdateRoomRequest request, {$grpc.CallOptions? options}) {
+  $grpc.ResponseFuture<$5.UpdateRoomReply> updateRoom($5.UpdateRoomRequest request, {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$updateRoom, request, options: options);
   }
 
-  $grpc.ResponseFuture<$4.EndRoomReply> endRoom($4.EndRoomRequest request, {$grpc.CallOptions? options}) {
+  $grpc.ResponseFuture<$5.EndRoomReply> endRoom($5.EndRoomRequest request, {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$endRoom, request, options: options);
   }
 
-  $grpc.ResponseFuture<$4.GetRoomsReply> getRooms($4.GetRoomsRequest request, {$grpc.CallOptions? options}) {
+  $grpc.ResponseFuture<$5.GetRoomsReply> getRooms($5.GetRoomsRequest request, {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$getRooms, request, options: options);
   }
 
-  $grpc.ResponseFuture<$4.AddPeerReply> addPeer($4.AddPeerRequest request, {$grpc.CallOptions? options}) {
+  $grpc.ResponseFuture<$5.AddPeerReply> addPeer($5.AddPeerRequest request, {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$addPeer, request, options: options);
   }
 
-  $grpc.ResponseFuture<$4.UpdatePeerReply> updatePeer($4.UpdatePeerRequest request, {$grpc.CallOptions? options}) {
+  $grpc.ResponseFuture<$5.UpdatePeerReply> updatePeer($5.UpdatePeerRequest request, {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$updatePeer, request, options: options);
   }
 
-  $grpc.ResponseFuture<$4.RemovePeerReply> removePeer($4.RemovePeerRequest request, {$grpc.CallOptions? options}) {
+  $grpc.ResponseFuture<$5.RemovePeerReply> removePeer($5.RemovePeerRequest request, {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$removePeer, request, options: options);
   }
 
-  $grpc.ResponseFuture<$4.GetPeersReply> getPeers($4.GetPeersRequest request, {$grpc.CallOptions? options}) {
+  $grpc.ResponseFuture<$5.GetPeersReply> getPeers($5.GetPeersRequest request, {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$getPeers, request, options: options);
   }
 }
@@ -98,111 +98,111 @@ abstract class RoomServiceBase extends $grpc.Service {
   $core.String get $name => 'room.RoomService';
 
   RoomServiceBase() {
-    $addMethod($grpc.ServiceMethod<$4.CreateRoomRequest, $4.CreateRoomReply>(
+    $addMethod($grpc.ServiceMethod<$5.CreateRoomRequest, $5.CreateRoomReply>(
         'CreateRoom',
         createRoom_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $4.CreateRoomRequest.fromBuffer(value),
-        ($4.CreateRoomReply value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$4.UpdateRoomRequest, $4.UpdateRoomReply>(
+        ($core.List<$core.int> value) => $5.CreateRoomRequest.fromBuffer(value),
+        ($5.CreateRoomReply value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$5.UpdateRoomRequest, $5.UpdateRoomReply>(
         'UpdateRoom',
         updateRoom_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $4.UpdateRoomRequest.fromBuffer(value),
-        ($4.UpdateRoomReply value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$4.EndRoomRequest, $4.EndRoomReply>(
+        ($core.List<$core.int> value) => $5.UpdateRoomRequest.fromBuffer(value),
+        ($5.UpdateRoomReply value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$5.EndRoomRequest, $5.EndRoomReply>(
         'EndRoom',
         endRoom_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $4.EndRoomRequest.fromBuffer(value),
-        ($4.EndRoomReply value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$4.GetRoomsRequest, $4.GetRoomsReply>(
+        ($core.List<$core.int> value) => $5.EndRoomRequest.fromBuffer(value),
+        ($5.EndRoomReply value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$5.GetRoomsRequest, $5.GetRoomsReply>(
         'GetRooms',
         getRooms_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $4.GetRoomsRequest.fromBuffer(value),
-        ($4.GetRoomsReply value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$4.AddPeerRequest, $4.AddPeerReply>(
+        ($core.List<$core.int> value) => $5.GetRoomsRequest.fromBuffer(value),
+        ($5.GetRoomsReply value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$5.AddPeerRequest, $5.AddPeerReply>(
         'AddPeer',
         addPeer_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $4.AddPeerRequest.fromBuffer(value),
-        ($4.AddPeerReply value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$4.UpdatePeerRequest, $4.UpdatePeerReply>(
+        ($core.List<$core.int> value) => $5.AddPeerRequest.fromBuffer(value),
+        ($5.AddPeerReply value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$5.UpdatePeerRequest, $5.UpdatePeerReply>(
         'UpdatePeer',
         updatePeer_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $4.UpdatePeerRequest.fromBuffer(value),
-        ($4.UpdatePeerReply value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$4.RemovePeerRequest, $4.RemovePeerReply>(
+        ($core.List<$core.int> value) => $5.UpdatePeerRequest.fromBuffer(value),
+        ($5.UpdatePeerReply value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$5.RemovePeerRequest, $5.RemovePeerReply>(
         'RemovePeer',
         removePeer_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $4.RemovePeerRequest.fromBuffer(value),
-        ($4.RemovePeerReply value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$4.GetPeersRequest, $4.GetPeersReply>(
+        ($core.List<$core.int> value) => $5.RemovePeerRequest.fromBuffer(value),
+        ($5.RemovePeerReply value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$5.GetPeersRequest, $5.GetPeersReply>(
         'GetPeers',
         getPeers_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $4.GetPeersRequest.fromBuffer(value),
-        ($4.GetPeersReply value) => value.writeToBuffer()));
+        ($core.List<$core.int> value) => $5.GetPeersRequest.fromBuffer(value),
+        ($5.GetPeersReply value) => value.writeToBuffer()));
   }
 
-  $async.Future<$4.CreateRoomReply> createRoom_Pre($grpc.ServiceCall call, $async.Future<$4.CreateRoomRequest> request) async {
+  $async.Future<$5.CreateRoomReply> createRoom_Pre($grpc.ServiceCall call, $async.Future<$5.CreateRoomRequest> request) async {
     return createRoom(call, await request);
   }
 
-  $async.Future<$4.UpdateRoomReply> updateRoom_Pre($grpc.ServiceCall call, $async.Future<$4.UpdateRoomRequest> request) async {
+  $async.Future<$5.UpdateRoomReply> updateRoom_Pre($grpc.ServiceCall call, $async.Future<$5.UpdateRoomRequest> request) async {
     return updateRoom(call, await request);
   }
 
-  $async.Future<$4.EndRoomReply> endRoom_Pre($grpc.ServiceCall call, $async.Future<$4.EndRoomRequest> request) async {
+  $async.Future<$5.EndRoomReply> endRoom_Pre($grpc.ServiceCall call, $async.Future<$5.EndRoomRequest> request) async {
     return endRoom(call, await request);
   }
 
-  $async.Future<$4.GetRoomsReply> getRooms_Pre($grpc.ServiceCall call, $async.Future<$4.GetRoomsRequest> request) async {
+  $async.Future<$5.GetRoomsReply> getRooms_Pre($grpc.ServiceCall call, $async.Future<$5.GetRoomsRequest> request) async {
     return getRooms(call, await request);
   }
 
-  $async.Future<$4.AddPeerReply> addPeer_Pre($grpc.ServiceCall call, $async.Future<$4.AddPeerRequest> request) async {
+  $async.Future<$5.AddPeerReply> addPeer_Pre($grpc.ServiceCall call, $async.Future<$5.AddPeerRequest> request) async {
     return addPeer(call, await request);
   }
 
-  $async.Future<$4.UpdatePeerReply> updatePeer_Pre($grpc.ServiceCall call, $async.Future<$4.UpdatePeerRequest> request) async {
+  $async.Future<$5.UpdatePeerReply> updatePeer_Pre($grpc.ServiceCall call, $async.Future<$5.UpdatePeerRequest> request) async {
     return updatePeer(call, await request);
   }
 
-  $async.Future<$4.RemovePeerReply> removePeer_Pre($grpc.ServiceCall call, $async.Future<$4.RemovePeerRequest> request) async {
+  $async.Future<$5.RemovePeerReply> removePeer_Pre($grpc.ServiceCall call, $async.Future<$5.RemovePeerRequest> request) async {
     return removePeer(call, await request);
   }
 
-  $async.Future<$4.GetPeersReply> getPeers_Pre($grpc.ServiceCall call, $async.Future<$4.GetPeersRequest> request) async {
+  $async.Future<$5.GetPeersReply> getPeers_Pre($grpc.ServiceCall call, $async.Future<$5.GetPeersRequest> request) async {
     return getPeers(call, await request);
   }
 
-  $async.Future<$4.CreateRoomReply> createRoom($grpc.ServiceCall call, $4.CreateRoomRequest request);
-  $async.Future<$4.UpdateRoomReply> updateRoom($grpc.ServiceCall call, $4.UpdateRoomRequest request);
-  $async.Future<$4.EndRoomReply> endRoom($grpc.ServiceCall call, $4.EndRoomRequest request);
-  $async.Future<$4.GetRoomsReply> getRooms($grpc.ServiceCall call, $4.GetRoomsRequest request);
-  $async.Future<$4.AddPeerReply> addPeer($grpc.ServiceCall call, $4.AddPeerRequest request);
-  $async.Future<$4.UpdatePeerReply> updatePeer($grpc.ServiceCall call, $4.UpdatePeerRequest request);
-  $async.Future<$4.RemovePeerReply> removePeer($grpc.ServiceCall call, $4.RemovePeerRequest request);
-  $async.Future<$4.GetPeersReply> getPeers($grpc.ServiceCall call, $4.GetPeersRequest request);
+  $async.Future<$5.CreateRoomReply> createRoom($grpc.ServiceCall call, $5.CreateRoomRequest request);
+  $async.Future<$5.UpdateRoomReply> updateRoom($grpc.ServiceCall call, $5.UpdateRoomRequest request);
+  $async.Future<$5.EndRoomReply> endRoom($grpc.ServiceCall call, $5.EndRoomRequest request);
+  $async.Future<$5.GetRoomsReply> getRooms($grpc.ServiceCall call, $5.GetRoomsRequest request);
+  $async.Future<$5.AddPeerReply> addPeer($grpc.ServiceCall call, $5.AddPeerRequest request);
+  $async.Future<$5.UpdatePeerReply> updatePeer($grpc.ServiceCall call, $5.UpdatePeerRequest request);
+  $async.Future<$5.RemovePeerReply> removePeer($grpc.ServiceCall call, $5.RemovePeerRequest request);
+  $async.Future<$5.GetPeersReply> getPeers($grpc.ServiceCall call, $5.GetPeersRequest request);
 }
 @$pb.GrpcServiceName('room.RoomSignal')
 class RoomSignalClient extends $grpc.Client {
-  static final _$signal = $grpc.ClientMethod<$4.Request, $4.Reply>(
+  static final _$signal = $grpc.ClientMethod<$5.Request, $5.Reply>(
       '/room.RoomSignal/Signal',
-      ($4.Request value) => value.writeToBuffer(),
-      ($core.List<$core.int> value) => $4.Reply.fromBuffer(value));
+      ($5.Request value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $5.Reply.fromBuffer(value));
 
   RoomSignalClient($grpc.ClientChannel channel,
       {$grpc.CallOptions? options,
@@ -210,7 +210,7 @@ class RoomSignalClient extends $grpc.Client {
       : super(channel, options: options,
         interceptors: interceptors);
 
-  $grpc.ResponseStream<$4.Reply> signal($async.Stream<$4.Request> request, {$grpc.CallOptions? options}) {
+  $grpc.ResponseStream<$5.Reply> signal($async.Stream<$5.Request> request, {$grpc.CallOptions? options}) {
     return $createStreamingCall(_$signal, request, options: options);
   }
 }
@@ -220,14 +220,14 @@ abstract class RoomSignalServiceBase extends $grpc.Service {
   $core.String get $name => 'room.RoomSignal';
 
   RoomSignalServiceBase() {
-    $addMethod($grpc.ServiceMethod<$4.Request, $4.Reply>(
+    $addMethod($grpc.ServiceMethod<$5.Request, $5.Reply>(
         'Signal',
         signal,
         true,
         true,
-        ($core.List<$core.int> value) => $4.Request.fromBuffer(value),
-        ($4.Reply value) => value.writeToBuffer()));
+        ($core.List<$core.int> value) => $5.Request.fromBuffer(value),
+        ($5.Reply value) => value.writeToBuffer()));
   }
 
-  $async.Stream<$4.Reply> signal($grpc.ServiceCall call, $async.Stream<$4.Request> request);
+  $async.Stream<$5.Reply> signal($grpc.ServiceCall call, $async.Stream<$5.Request> request);
 }

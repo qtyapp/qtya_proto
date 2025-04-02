@@ -13,7 +13,7 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import '../../core/v1/prototime.pb.dart' as $6;
+import '../../core/v1/prototime.pb.dart' as $7;
 
 export 'chat.pbenum.dart';
 
@@ -22,7 +22,7 @@ class MessageReaction extends $pb.GeneratedMessage {
   factory MessageReaction({
     $core.String? userId,
     $core.String? emoji,
-    $6.ProtoTime? updatedAt,
+    $7.ProtoTime? updatedAt,
   }) {
     final $result = create();
     if (userId != null) {
@@ -43,7 +43,7 @@ class MessageReaction extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'MessageReaction', package: const $pb.PackageName(_omitMessageNames ? '' : 'qtya.chat.v1'), createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'userId')
     ..aOS(2, _omitFieldNames ? '' : 'emoji')
-    ..aOM<$6.ProtoTime>(3, _omitFieldNames ? '' : 'updatedAt', subBuilder: $6.ProtoTime.create)
+    ..aOM<$7.ProtoTime>(3, _omitFieldNames ? '' : 'updatedAt', subBuilder: $7.ProtoTime.create)
     ..hasRequiredFields = false
   ;
 
@@ -87,15 +87,15 @@ class MessageReaction extends $pb.GeneratedMessage {
   void clearEmoji() => clearField(2);
 
   @$pb.TagNumber(3)
-  $6.ProtoTime get updatedAt => $_getN(2);
+  $7.ProtoTime get updatedAt => $_getN(2);
   @$pb.TagNumber(3)
-  set updatedAt($6.ProtoTime v) { setField(3, v); }
+  set updatedAt($7.ProtoTime v) { setField(3, v); }
   @$pb.TagNumber(3)
   $core.bool hasUpdatedAt() => $_has(2);
   @$pb.TagNumber(3)
   void clearUpdatedAt() => clearField(3);
   @$pb.TagNumber(3)
-  $6.ProtoTime ensureUpdatedAt() => $_ensure(2);
+  $7.ProtoTime ensureUpdatedAt() => $_ensure(2);
 }
 
 class MessageAttachment extends $pb.GeneratedMessage {
@@ -169,12 +169,12 @@ class ChatMessage extends $pb.GeneratedMessage {
     $core.String? conversationId,
     $core.List<$core.int>? payload,
     $core.String? senderId,
-    $6.ProtoTime? sentAt,
+    $7.ProtoTime? sentAt,
     $core.Iterable<MessageReaction>? reactions,
-    $6.ProtoTime? deletedAt,
+    $7.ProtoTime? deletedAt,
     $core.String? deletedBy,
     $core.String? messageType,
-    $6.ProtoTime? seenAt,
+    $7.ProtoTime? seenAt,
     $core.Iterable<MessageAttachment>? attachments,
   }) {
     final $result = create();
@@ -222,12 +222,12 @@ class ChatMessage extends $pb.GeneratedMessage {
     ..aOS(2, _omitFieldNames ? '' : 'conversationId')
     ..a<$core.List<$core.int>>(3, _omitFieldNames ? '' : 'payload', $pb.PbFieldType.OY)
     ..aOS(4, _omitFieldNames ? '' : 'senderId')
-    ..aOM<$6.ProtoTime>(5, _omitFieldNames ? '' : 'sentAt', subBuilder: $6.ProtoTime.create)
+    ..aOM<$7.ProtoTime>(5, _omitFieldNames ? '' : 'sentAt', subBuilder: $7.ProtoTime.create)
     ..pc<MessageReaction>(6, _omitFieldNames ? '' : 'reactions', $pb.PbFieldType.PM, subBuilder: MessageReaction.create)
-    ..aOM<$6.ProtoTime>(7, _omitFieldNames ? '' : 'deletedAt', subBuilder: $6.ProtoTime.create)
+    ..aOM<$7.ProtoTime>(7, _omitFieldNames ? '' : 'deletedAt', subBuilder: $7.ProtoTime.create)
     ..aOS(8, _omitFieldNames ? '' : 'deletedBy')
     ..aOS(9, _omitFieldNames ? '' : 'messageType')
-    ..aOM<$6.ProtoTime>(10, _omitFieldNames ? '' : 'seenAt', subBuilder: $6.ProtoTime.create)
+    ..aOM<$7.ProtoTime>(10, _omitFieldNames ? '' : 'seenAt', subBuilder: $7.ProtoTime.create)
     ..pc<MessageAttachment>(11, _omitFieldNames ? '' : 'attachments', $pb.PbFieldType.PM, subBuilder: MessageAttachment.create)
     ..hasRequiredFields = false
   ;
@@ -290,29 +290,29 @@ class ChatMessage extends $pb.GeneratedMessage {
   void clearSenderId() => clearField(4);
 
   @$pb.TagNumber(5)
-  $6.ProtoTime get sentAt => $_getN(4);
+  $7.ProtoTime get sentAt => $_getN(4);
   @$pb.TagNumber(5)
-  set sentAt($6.ProtoTime v) { setField(5, v); }
+  set sentAt($7.ProtoTime v) { setField(5, v); }
   @$pb.TagNumber(5)
   $core.bool hasSentAt() => $_has(4);
   @$pb.TagNumber(5)
   void clearSentAt() => clearField(5);
   @$pb.TagNumber(5)
-  $6.ProtoTime ensureSentAt() => $_ensure(4);
+  $7.ProtoTime ensureSentAt() => $_ensure(4);
 
   @$pb.TagNumber(6)
   $core.List<MessageReaction> get reactions => $_getList(5);
 
   @$pb.TagNumber(7)
-  $6.ProtoTime get deletedAt => $_getN(6);
+  $7.ProtoTime get deletedAt => $_getN(6);
   @$pb.TagNumber(7)
-  set deletedAt($6.ProtoTime v) { setField(7, v); }
+  set deletedAt($7.ProtoTime v) { setField(7, v); }
   @$pb.TagNumber(7)
   $core.bool hasDeletedAt() => $_has(6);
   @$pb.TagNumber(7)
   void clearDeletedAt() => clearField(7);
   @$pb.TagNumber(7)
-  $6.ProtoTime ensureDeletedAt() => $_ensure(6);
+  $7.ProtoTime ensureDeletedAt() => $_ensure(6);
 
   @$pb.TagNumber(8)
   $core.String get deletedBy => $_getSZ(7);
@@ -333,15 +333,15 @@ class ChatMessage extends $pb.GeneratedMessage {
   void clearMessageType() => clearField(9);
 
   @$pb.TagNumber(10)
-  $6.ProtoTime get seenAt => $_getN(9);
+  $7.ProtoTime get seenAt => $_getN(9);
   @$pb.TagNumber(10)
-  set seenAt($6.ProtoTime v) { setField(10, v); }
+  set seenAt($7.ProtoTime v) { setField(10, v); }
   @$pb.TagNumber(10)
   $core.bool hasSeenAt() => $_has(9);
   @$pb.TagNumber(10)
   void clearSeenAt() => clearField(10);
   @$pb.TagNumber(10)
-  $6.ProtoTime ensureSeenAt() => $_ensure(9);
+  $7.ProtoTime ensureSeenAt() => $_ensure(9);
 
   @$pb.TagNumber(11)
   $core.List<MessageAttachment> get attachments => $_getList(10);
@@ -355,8 +355,8 @@ class Buddy extends $pb.GeneratedMessage {
     $core.String? name,
     $core.String? email,
     $core.String? picture,
-    $6.ProtoTime? registeredAt,
-    $6.ProtoTime? lastOnline,
+    $7.ProtoTime? registeredAt,
+    $7.ProtoTime? lastOnline,
     $core.String? qtyaId,
   }) {
     final $result = create();
@@ -392,8 +392,8 @@ class Buddy extends $pb.GeneratedMessage {
     ..aOS(2, _omitFieldNames ? '' : 'name')
     ..aOS(3, _omitFieldNames ? '' : 'email')
     ..aOS(4, _omitFieldNames ? '' : 'picture')
-    ..aOM<$6.ProtoTime>(8, _omitFieldNames ? '' : 'registeredAt', subBuilder: $6.ProtoTime.create)
-    ..aOM<$6.ProtoTime>(9, _omitFieldNames ? '' : 'lastOnline', subBuilder: $6.ProtoTime.create)
+    ..aOM<$7.ProtoTime>(8, _omitFieldNames ? '' : 'registeredAt', subBuilder: $7.ProtoTime.create)
+    ..aOM<$7.ProtoTime>(9, _omitFieldNames ? '' : 'lastOnline', subBuilder: $7.ProtoTime.create)
     ..aOS(10, _omitFieldNames ? '' : 'qtyaId')
     ..hasRequiredFields = false
   ;
@@ -456,26 +456,26 @@ class Buddy extends $pb.GeneratedMessage {
   void clearPicture() => clearField(4);
 
   @$pb.TagNumber(8)
-  $6.ProtoTime get registeredAt => $_getN(4);
+  $7.ProtoTime get registeredAt => $_getN(4);
   @$pb.TagNumber(8)
-  set registeredAt($6.ProtoTime v) { setField(8, v); }
+  set registeredAt($7.ProtoTime v) { setField(8, v); }
   @$pb.TagNumber(8)
   $core.bool hasRegisteredAt() => $_has(4);
   @$pb.TagNumber(8)
   void clearRegisteredAt() => clearField(8);
   @$pb.TagNumber(8)
-  $6.ProtoTime ensureRegisteredAt() => $_ensure(4);
+  $7.ProtoTime ensureRegisteredAt() => $_ensure(4);
 
   @$pb.TagNumber(9)
-  $6.ProtoTime get lastOnline => $_getN(5);
+  $7.ProtoTime get lastOnline => $_getN(5);
   @$pb.TagNumber(9)
-  set lastOnline($6.ProtoTime v) { setField(9, v); }
+  set lastOnline($7.ProtoTime v) { setField(9, v); }
   @$pb.TagNumber(9)
   $core.bool hasLastOnline() => $_has(5);
   @$pb.TagNumber(9)
   void clearLastOnline() => clearField(9);
   @$pb.TagNumber(9)
-  $6.ProtoTime ensureLastOnline() => $_ensure(5);
+  $7.ProtoTime ensureLastOnline() => $_ensure(5);
 
   @$pb.TagNumber(10)
   $core.String get qtyaId => $_getSZ(6);
@@ -492,7 +492,7 @@ class Conversation extends $pb.GeneratedMessage {
     $core.String? cid,
     $core.String? name,
     $core.String? lastMessage,
-    $6.ProtoTime? lastMessageAt,
+    $7.ProtoTime? lastMessageAt,
     $core.bool? delivered,
     $core.String? picture,
     $core.Iterable<$core.String>? participants,
@@ -529,7 +529,7 @@ class Conversation extends $pb.GeneratedMessage {
     ..aOS(1, _omitFieldNames ? '' : 'cid')
     ..aOS(2, _omitFieldNames ? '' : 'name')
     ..aOS(3, _omitFieldNames ? '' : 'lastMessage')
-    ..aOM<$6.ProtoTime>(4, _omitFieldNames ? '' : 'lastMessageAt', subBuilder: $6.ProtoTime.create)
+    ..aOM<$7.ProtoTime>(4, _omitFieldNames ? '' : 'lastMessageAt', subBuilder: $7.ProtoTime.create)
     ..aOB(5, _omitFieldNames ? '' : 'delivered')
     ..aOS(6, _omitFieldNames ? '' : 'picture')
     ..pPS(7, _omitFieldNames ? '' : 'participants')
@@ -589,15 +589,15 @@ class Conversation extends $pb.GeneratedMessage {
 
   /// Last message delivery time
   @$pb.TagNumber(4)
-  $6.ProtoTime get lastMessageAt => $_getN(3);
+  $7.ProtoTime get lastMessageAt => $_getN(3);
   @$pb.TagNumber(4)
-  set lastMessageAt($6.ProtoTime v) { setField(4, v); }
+  set lastMessageAt($7.ProtoTime v) { setField(4, v); }
   @$pb.TagNumber(4)
   $core.bool hasLastMessageAt() => $_has(3);
   @$pb.TagNumber(4)
   void clearLastMessageAt() => clearField(4);
   @$pb.TagNumber(4)
-  $6.ProtoTime ensureLastMessageAt() => $_ensure(3);
+  $7.ProtoTime ensureLastMessageAt() => $_ensure(3);
 
   /// Is this delivered to the client (requested at least once)
   @$pb.TagNumber(5)
@@ -631,7 +631,7 @@ class UserPresence extends $pb.GeneratedMessage {
     $core.String? status,
     $core.String? statusMessage,
     $core.String? statusIcon,
-    $6.ProtoTime? lastOnlineAt,
+    $7.ProtoTime? lastOnlineAt,
   }) {
     final $result = create();
     if (userId != null) {
@@ -664,7 +664,7 @@ class UserPresence extends $pb.GeneratedMessage {
     ..aOS(3, _omitFieldNames ? '' : 'status')
     ..aOS(4, _omitFieldNames ? '' : 'statusMessage')
     ..aOS(5, _omitFieldNames ? '' : 'statusIcon')
-    ..aOM<$6.ProtoTime>(6, _omitFieldNames ? '' : 'lastOnlineAt', subBuilder: $6.ProtoTime.create)
+    ..aOM<$7.ProtoTime>(6, _omitFieldNames ? '' : 'lastOnlineAt', subBuilder: $7.ProtoTime.create)
     ..hasRequiredFields = false
   ;
 
@@ -741,15 +741,15 @@ class UserPresence extends $pb.GeneratedMessage {
 
   /// Last online time
   @$pb.TagNumber(6)
-  $6.ProtoTime get lastOnlineAt => $_getN(5);
+  $7.ProtoTime get lastOnlineAt => $_getN(5);
   @$pb.TagNumber(6)
-  set lastOnlineAt($6.ProtoTime v) { setField(6, v); }
+  set lastOnlineAt($7.ProtoTime v) { setField(6, v); }
   @$pb.TagNumber(6)
   $core.bool hasLastOnlineAt() => $_has(5);
   @$pb.TagNumber(6)
   void clearLastOnlineAt() => clearField(6);
   @$pb.TagNumber(6)
-  $6.ProtoTime ensureLastOnlineAt() => $_ensure(5);
+  $7.ProtoTime ensureLastOnlineAt() => $_ensure(5);
 }
 
 class UpdateRequestMessage extends $pb.GeneratedMessage {
