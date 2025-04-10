@@ -15,7 +15,11 @@ import 'package:fixnum/fixnum.dart' as $fixnum;
 import 'package:protobuf/protobuf.dart' as $pb;
 
 import '../../core/v1/prototime.pb.dart' as $7;
+import 'messages.pbenum.dart';
 
+export 'messages.pbenum.dart';
+
+/// ChatMessage is the message that is sent between the client and the server
 class ChatMessage extends $pb.GeneratedMessage {
   factory ChatMessage({
     $core.String? messageId,
@@ -26,9 +30,11 @@ class ChatMessage extends $pb.GeneratedMessage {
     $core.Iterable<MessageReaction>? reactions,
     $7.ProtoTime? deletedAt,
     $core.String? deletedBy,
-    $core.String? messageType,
+    MessageType? messageType,
     $7.ProtoTime? seenAt,
     $core.Iterable<MessageAttachment>? attachments,
+    $core.String? temporaryMessageId,
+    $7.ProtoTime? deliveredAt,
   }) {
     final $result = create();
     if (messageId != null) {
@@ -64,6 +70,12 @@ class ChatMessage extends $pb.GeneratedMessage {
     if (attachments != null) {
       $result.attachments.addAll(attachments);
     }
+    if (temporaryMessageId != null) {
+      $result.temporaryMessageId = temporaryMessageId;
+    }
+    if (deliveredAt != null) {
+      $result.deliveredAt = deliveredAt;
+    }
     return $result;
   }
   ChatMessage._() : super();
@@ -79,9 +91,11 @@ class ChatMessage extends $pb.GeneratedMessage {
     ..pc<MessageReaction>(6, _omitFieldNames ? '' : 'reactions', $pb.PbFieldType.PM, subBuilder: MessageReaction.create)
     ..aOM<$7.ProtoTime>(7, _omitFieldNames ? '' : 'deletedAt', subBuilder: $7.ProtoTime.create)
     ..aOS(8, _omitFieldNames ? '' : 'deletedBy')
-    ..aOS(9, _omitFieldNames ? '' : 'messageType')
+    ..e<MessageType>(9, _omitFieldNames ? '' : 'messageType', $pb.PbFieldType.OE, defaultOrMaker: MessageType.UNKNOWN, valueOf: MessageType.valueOf, enumValues: MessageType.values)
     ..aOM<$7.ProtoTime>(10, _omitFieldNames ? '' : 'seenAt', subBuilder: $7.ProtoTime.create)
     ..pc<MessageAttachment>(11, _omitFieldNames ? '' : 'attachments', $pb.PbFieldType.PM, subBuilder: MessageAttachment.create)
+    ..aOS(12, _omitFieldNames ? '' : 'temporaryMessageId')
+    ..aOM<$7.ProtoTime>(13, _omitFieldNames ? '' : 'deliveredAt', subBuilder: $7.ProtoTime.create)
     ..hasRequiredFields = false
   ;
 
@@ -177,9 +191,9 @@ class ChatMessage extends $pb.GeneratedMessage {
   void clearDeletedBy() => clearField(8);
 
   @$pb.TagNumber(9)
-  $core.String get messageType => $_getSZ(8);
+  MessageType get messageType => $_getN(8);
   @$pb.TagNumber(9)
-  set messageType($core.String v) { $_setString(8, v); }
+  set messageType(MessageType v) { setField(9, v); }
   @$pb.TagNumber(9)
   $core.bool hasMessageType() => $_has(8);
   @$pb.TagNumber(9)
@@ -198,6 +212,29 @@ class ChatMessage extends $pb.GeneratedMessage {
 
   @$pb.TagNumber(11)
   $core.List<MessageAttachment> get attachments => $_getList(10);
+
+  /// TemporaryMessageId is the temporary id of the message generated from the client. This
+  /// is mostly used for messages that are sent from the client to the server, to identify
+  /// the message on the client. This value is not stored on the server.
+  @$pb.TagNumber(12)
+  $core.String get temporaryMessageId => $_getSZ(11);
+  @$pb.TagNumber(12)
+  set temporaryMessageId($core.String v) { $_setString(11, v); }
+  @$pb.TagNumber(12)
+  $core.bool hasTemporaryMessageId() => $_has(11);
+  @$pb.TagNumber(12)
+  void clearTemporaryMessageId() => clearField(12);
+
+  @$pb.TagNumber(13)
+  $7.ProtoTime get deliveredAt => $_getN(12);
+  @$pb.TagNumber(13)
+  set deliveredAt($7.ProtoTime v) { setField(13, v); }
+  @$pb.TagNumber(13)
+  $core.bool hasDeliveredAt() => $_has(12);
+  @$pb.TagNumber(13)
+  void clearDeliveredAt() => clearField(13);
+  @$pb.TagNumber(13)
+  $7.ProtoTime ensureDeliveredAt() => $_ensure(12);
 }
 
 class Conversation extends $pb.GeneratedMessage {

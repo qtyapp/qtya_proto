@@ -27,7 +27,7 @@ from qtya.core.v1 import prototime_pb2 as qtya_dot_core_dot_v1_dot_prototime__pb
 from qtya.chat.v2 import messages_pb2 as qtya_dot_chat_dot_v2_dot_messages__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1eqtya/chat/v2/chatservice.proto\x12\x0cqtya.chat.v2\x1a google/protobuf/descriptor.proto\x1a\x1cqtya/core/v1/prototime.proto\x1a\x1bqtya/chat/v2/messages.proto\"|\n\x0cLoginRequest\x12\x1a\n\x08username\x18\x01 \x01(\tR\x08username\x12\x1a\n\x08password\x18\x02 \x01(\tR\x08password\x12$\n\x0bremember_me\x18\x03 \x01(\x08H\x00R\nrememberMe\x88\x01\x01\x42\x0e\n\x0c_remember_me\"%\n\rLoginResponse\x12\x14\n\x05token\x18\x01 \x01(\tR\x05token\"c\n\x12SendMessageRequest\x12\x10\n\x03\x63id\x18\x01 \x01(\tR\x03\x63id\x12!\n\x0cpayload_type\x18\x02 \x01(\tR\x0bpayloadType\x12\x18\n\x07payload\x18\x03 \x01(\x0cR\x07payload\"4\n\x13SendMessageResponse\x12\x1d\n\nmessage_id\x18\x01 \x01(\tR\tmessageId\"P\n\x12GetMessagesRequest\x12\x10\n\x03\x63id\x18\x01 \x01(\tR\x03\x63id\x12\x14\n\x05limit\x18\x02 \x01(\x05R\x05limit\x12\x12\n\x04\x66rom\x18\x03 \x01(\tR\x04\x66rom\"L\n\x13GetMessagesResponse\x12\x35\n\x08messages\x18\x01 \x03(\x0b\x32\x19.qtya.chat.v2.ChatMessageR\x08messages\"C\n\x17GetConversationsRequest\x12\x12\n\x04\x66rom\x18\x01 \x01(\tR\x04\x66rom\x12\x14\n\x05limit\x18\x02 \x01(\x05R\x05limit\"\\\n\x18GetConversationsResponse\x12@\n\rconversations\x18\x01 \x03(\x0b\x32\x1a.qtya.chat.v2.ConversationR\rconversations\"?\n\x19\x43reateConversationRequest\x12\"\n\x0cparticipants\x18\x01 \x03(\tR\x0cparticipants\"E\n\x1a\x43reateConversationResponse\x12\'\n\x0f\x63onversation_id\x18\x01 \x01(\tR\x0e\x63onversationId\")\n\x0eGetUserRequest\x12\x17\n\x07user_id\x18\x01 \x01(\tR\x06userId\"9\n\x0fGetUserResponse\x12&\n\x04user\x18\x01 \x01(\x0b\x32\x12.qtya.chat.v2.UserR\x04user\"@\n\x12SearchUsersRequest\x12\x14\n\x05query\x18\x01 \x01(\tR\x05query\x12\x14\n\x05limit\x18\x02 \x01(\x05R\x05limit\"?\n\x13SearchUsersResponse\x12(\n\x05users\x18\x01 \x03(\x0b\x32\x12.qtya.chat.v2.UserR\x05users\"G\n\x14MessageReadedRequest\x12\x10\n\x03\x63id\x18\x01 \x01(\tR\x03\x63id\x12\x1d\n\nmessage_id\x18\x02 \x01(\tR\tmessageId\"\x17\n\x15MessageReadedResponse\"\xf3\x01\n\x15UpdatePresenceRequest\x12\x1a\n\x08presence\x18\x01 \x01(\tR\x08presence\x12\x16\n\x06status\x18\x02 \x01(\tR\x06status\x12$\n\x0bstatus_icon\x18\x03 \x01(\tH\x00R\nstatusIcon\x88\x01\x01\x12*\n\x0estatus_message\x18\x04 \x01(\tH\x01R\rstatusMessage\x88\x01\x01\x12\"\n\nexpires_in\x18\x05 \x01(\x03H\x02R\texpiresIn\x88\x01\x01\x42\x0e\n\x0c_status_iconB\x11\n\x0f_status_messageB\r\n\x0b_expires_in\"\x18\n\x16UpdatePresenceResponse2\xa8\x06\n\x0b\x43hatService\x12\x42\n\x05Login\x12\x1a.qtya.chat.v2.LoginRequest\x1a\x1b.qtya.chat.v2.LoginResponse\"\x00\x12T\n\x0bSendMessage\x12 .qtya.chat.v2.SendMessageRequest\x1a!.qtya.chat.v2.SendMessageResponse\"\x00\x12T\n\x0bGetMessages\x12 .qtya.chat.v2.GetMessagesRequest\x1a!.qtya.chat.v2.GetMessagesResponse\"\x00\x12\x63\n\x10GetConversations\x12%.qtya.chat.v2.GetConversationsRequest\x1a&.qtya.chat.v2.GetConversationsResponse\"\x00\x12i\n\x12\x43reateConversation\x12\'.qtya.chat.v2.CreateConversationRequest\x1a(.qtya.chat.v2.CreateConversationResponse\"\x00\x12H\n\x07GetUser\x12\x1c.qtya.chat.v2.GetUserRequest\x1a\x1d.qtya.chat.v2.GetUserResponse\"\x00\x12T\n\x0bSearchUsers\x12 .qtya.chat.v2.SearchUsersRequest\x1a!.qtya.chat.v2.SearchUsersResponse\"\x00\x12Z\n\rMessageReaded\x12\".qtya.chat.v2.MessageReadedRequest\x1a#.qtya.chat.v2.MessageReadedResponse\"\x00\x12]\n\x0eUpdatePresence\x12#.qtya.chat.v2.UpdatePresenceRequest\x1a$.qtya.chat.v2.UpdatePresenceResponse\"\x00\x42\x32Z0github.com/qtyapp/qtya_proto/qtya/chat/v2;chatv2b\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1eqtya/chat/v2/chatservice.proto\x12\x0cqtya.chat.v2\x1a google/protobuf/descriptor.proto\x1a\x1cqtya/core/v1/prototime.proto\x1a\x1bqtya/chat/v2/messages.proto\"|\n\x0cLoginRequest\x12\x1a\n\x08username\x18\x01 \x01(\tR\x08username\x12\x1a\n\x08password\x18\x02 \x01(\tR\x08password\x12$\n\x0bremember_me\x18\x03 \x01(\x08H\x00R\nrememberMe\x88\x01\x01\x42\x0e\n\x0c_remember_me\"\x8d\x01\n\rLoginResponse\x12!\n\x0c\x61\x63\x63\x65ss_token\x18\x01 \x01(\tR\x0b\x61\x63\x63\x65ssToken\x12(\n\rrefresh_token\x18\x02 \x01(\tH\x00R\x0crefreshToken\x88\x01\x01\x12\x1d\n\nexpires_in\x18\x03 \x01(\x03R\texpiresInB\x10\n\x0e_refresh_token\"\xb3\x01\n\x12SendMessageRequest\x12\x10\n\x03\x63id\x18\x01 \x01(\tR\x03\x63id\x12!\n\x0cpayload_type\x18\x02 \x01(\tR\x0bpayloadType\x12\x18\n\x07payload\x18\x03 \x01(\x0cR\x07payload\x12\x35\n\x14temporary_message_id\x18\x04 \x01(\tH\x00R\x12temporaryMessageId\x88\x01\x01\x42\x17\n\x15_temporary_message_id\"4\n\x13SendMessageResponse\x12\x1d\n\nmessage_id\x18\x01 \x01(\tR\tmessageId\"P\n\x12GetMessagesRequest\x12\x10\n\x03\x63id\x18\x01 \x01(\tR\x03\x63id\x12\x14\n\x05limit\x18\x02 \x01(\x05R\x05limit\x12\x12\n\x04\x66rom\x18\x03 \x01(\tR\x04\x66rom\"L\n\x13GetMessagesResponse\x12\x35\n\x08messages\x18\x01 \x03(\x0b\x32\x19.qtya.chat.v2.ChatMessageR\x08messages\"C\n\x17GetConversationsRequest\x12\x12\n\x04\x66rom\x18\x01 \x01(\tR\x04\x66rom\x12\x14\n\x05limit\x18\x02 \x01(\x05R\x05limit\"\\\n\x18GetConversationsResponse\x12@\n\rconversations\x18\x01 \x03(\x0b\x32\x1a.qtya.chat.v2.ConversationR\rconversations\"?\n\x19\x43reateConversationRequest\x12\"\n\x0cparticipants\x18\x01 \x03(\tR\x0cparticipants\"E\n\x1a\x43reateConversationResponse\x12\'\n\x0f\x63onversation_id\x18\x01 \x01(\tR\x0e\x63onversationId\")\n\x0eGetUserRequest\x12\x17\n\x07user_id\x18\x01 \x01(\tR\x06userId\"9\n\x0fGetUserResponse\x12&\n\x04user\x18\x01 \x01(\x0b\x32\x12.qtya.chat.v2.UserR\x04user\"@\n\x12SearchUsersRequest\x12\x14\n\x05query\x18\x01 \x01(\tR\x05query\x12\x14\n\x05limit\x18\x02 \x01(\x05R\x05limit\"?\n\x13SearchUsersResponse\x12(\n\x05users\x18\x01 \x03(\x0b\x32\x12.qtya.chat.v2.UserR\x05users\"G\n\x14MessageReadedRequest\x12\x10\n\x03\x63id\x18\x01 \x01(\tR\x03\x63id\x12\x1d\n\nmessage_id\x18\x02 \x01(\tR\tmessageId\"\x17\n\x15MessageReadedResponse\"\xf3\x01\n\x15UpdatePresenceRequest\x12\x1a\n\x08presence\x18\x01 \x01(\tR\x08presence\x12\x16\n\x06status\x18\x02 \x01(\tR\x06status\x12$\n\x0bstatus_icon\x18\x03 \x01(\tH\x00R\nstatusIcon\x88\x01\x01\x12*\n\x0estatus_message\x18\x04 \x01(\tH\x01R\rstatusMessage\x88\x01\x01\x12\"\n\nexpires_in\x18\x05 \x01(\x03H\x02R\texpiresIn\x88\x01\x01\x42\x0e\n\x0c_status_iconB\x11\n\x0f_status_messageB\r\n\x0b_expires_in\"\x18\n\x16UpdatePresenceResponse2\xa8\x06\n\x0b\x43hatService\x12\x42\n\x05Login\x12\x1a.qtya.chat.v2.LoginRequest\x1a\x1b.qtya.chat.v2.LoginResponse\"\x00\x12T\n\x0bSendMessage\x12 .qtya.chat.v2.SendMessageRequest\x1a!.qtya.chat.v2.SendMessageResponse\"\x00\x12T\n\x0bGetMessages\x12 .qtya.chat.v2.GetMessagesRequest\x1a!.qtya.chat.v2.GetMessagesResponse\"\x00\x12\x63\n\x10GetConversations\x12%.qtya.chat.v2.GetConversationsRequest\x1a&.qtya.chat.v2.GetConversationsResponse\"\x00\x12i\n\x12\x43reateConversation\x12\'.qtya.chat.v2.CreateConversationRequest\x1a(.qtya.chat.v2.CreateConversationResponse\"\x00\x12H\n\x07GetUser\x12\x1c.qtya.chat.v2.GetUserRequest\x1a\x1d.qtya.chat.v2.GetUserResponse\"\x00\x12T\n\x0bSearchUsers\x12 .qtya.chat.v2.SearchUsersRequest\x1a!.qtya.chat.v2.SearchUsersResponse\"\x00\x12Z\n\rMessageReaded\x12\".qtya.chat.v2.MessageReadedRequest\x1a#.qtya.chat.v2.MessageReadedResponse\"\x00\x12]\n\x0eUpdatePresence\x12#.qtya.chat.v2.UpdatePresenceRequest\x1a$.qtya.chat.v2.UpdatePresenceResponse\"\x00\x42\x32Z0github.com/qtyapp/qtya_proto/qtya/chat/v2;chatv2b\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -37,40 +37,40 @@ if not _descriptor._USE_C_DESCRIPTORS:
   _globals['DESCRIPTOR']._serialized_options = b'Z0github.com/qtyapp/qtya_proto/qtya/chat/v2;chatv2'
   _globals['_LOGINREQUEST']._serialized_start=141
   _globals['_LOGINREQUEST']._serialized_end=265
-  _globals['_LOGINRESPONSE']._serialized_start=267
-  _globals['_LOGINRESPONSE']._serialized_end=304
-  _globals['_SENDMESSAGEREQUEST']._serialized_start=306
-  _globals['_SENDMESSAGEREQUEST']._serialized_end=405
-  _globals['_SENDMESSAGERESPONSE']._serialized_start=407
-  _globals['_SENDMESSAGERESPONSE']._serialized_end=459
-  _globals['_GETMESSAGESREQUEST']._serialized_start=461
-  _globals['_GETMESSAGESREQUEST']._serialized_end=541
-  _globals['_GETMESSAGESRESPONSE']._serialized_start=543
-  _globals['_GETMESSAGESRESPONSE']._serialized_end=619
-  _globals['_GETCONVERSATIONSREQUEST']._serialized_start=621
-  _globals['_GETCONVERSATIONSREQUEST']._serialized_end=688
-  _globals['_GETCONVERSATIONSRESPONSE']._serialized_start=690
-  _globals['_GETCONVERSATIONSRESPONSE']._serialized_end=782
-  _globals['_CREATECONVERSATIONREQUEST']._serialized_start=784
-  _globals['_CREATECONVERSATIONREQUEST']._serialized_end=847
-  _globals['_CREATECONVERSATIONRESPONSE']._serialized_start=849
-  _globals['_CREATECONVERSATIONRESPONSE']._serialized_end=918
-  _globals['_GETUSERREQUEST']._serialized_start=920
-  _globals['_GETUSERREQUEST']._serialized_end=961
-  _globals['_GETUSERRESPONSE']._serialized_start=963
-  _globals['_GETUSERRESPONSE']._serialized_end=1020
-  _globals['_SEARCHUSERSREQUEST']._serialized_start=1022
-  _globals['_SEARCHUSERSREQUEST']._serialized_end=1086
-  _globals['_SEARCHUSERSRESPONSE']._serialized_start=1088
-  _globals['_SEARCHUSERSRESPONSE']._serialized_end=1151
-  _globals['_MESSAGEREADEDREQUEST']._serialized_start=1153
-  _globals['_MESSAGEREADEDREQUEST']._serialized_end=1224
-  _globals['_MESSAGEREADEDRESPONSE']._serialized_start=1226
-  _globals['_MESSAGEREADEDRESPONSE']._serialized_end=1249
-  _globals['_UPDATEPRESENCEREQUEST']._serialized_start=1252
-  _globals['_UPDATEPRESENCEREQUEST']._serialized_end=1495
-  _globals['_UPDATEPRESENCERESPONSE']._serialized_start=1497
-  _globals['_UPDATEPRESENCERESPONSE']._serialized_end=1521
-  _globals['_CHATSERVICE']._serialized_start=1524
-  _globals['_CHATSERVICE']._serialized_end=2332
+  _globals['_LOGINRESPONSE']._serialized_start=268
+  _globals['_LOGINRESPONSE']._serialized_end=409
+  _globals['_SENDMESSAGEREQUEST']._serialized_start=412
+  _globals['_SENDMESSAGEREQUEST']._serialized_end=591
+  _globals['_SENDMESSAGERESPONSE']._serialized_start=593
+  _globals['_SENDMESSAGERESPONSE']._serialized_end=645
+  _globals['_GETMESSAGESREQUEST']._serialized_start=647
+  _globals['_GETMESSAGESREQUEST']._serialized_end=727
+  _globals['_GETMESSAGESRESPONSE']._serialized_start=729
+  _globals['_GETMESSAGESRESPONSE']._serialized_end=805
+  _globals['_GETCONVERSATIONSREQUEST']._serialized_start=807
+  _globals['_GETCONVERSATIONSREQUEST']._serialized_end=874
+  _globals['_GETCONVERSATIONSRESPONSE']._serialized_start=876
+  _globals['_GETCONVERSATIONSRESPONSE']._serialized_end=968
+  _globals['_CREATECONVERSATIONREQUEST']._serialized_start=970
+  _globals['_CREATECONVERSATIONREQUEST']._serialized_end=1033
+  _globals['_CREATECONVERSATIONRESPONSE']._serialized_start=1035
+  _globals['_CREATECONVERSATIONRESPONSE']._serialized_end=1104
+  _globals['_GETUSERREQUEST']._serialized_start=1106
+  _globals['_GETUSERREQUEST']._serialized_end=1147
+  _globals['_GETUSERRESPONSE']._serialized_start=1149
+  _globals['_GETUSERRESPONSE']._serialized_end=1206
+  _globals['_SEARCHUSERSREQUEST']._serialized_start=1208
+  _globals['_SEARCHUSERSREQUEST']._serialized_end=1272
+  _globals['_SEARCHUSERSRESPONSE']._serialized_start=1274
+  _globals['_SEARCHUSERSRESPONSE']._serialized_end=1337
+  _globals['_MESSAGEREADEDREQUEST']._serialized_start=1339
+  _globals['_MESSAGEREADEDREQUEST']._serialized_end=1410
+  _globals['_MESSAGEREADEDRESPONSE']._serialized_start=1412
+  _globals['_MESSAGEREADEDRESPONSE']._serialized_end=1435
+  _globals['_UPDATEPRESENCEREQUEST']._serialized_start=1438
+  _globals['_UPDATEPRESENCEREQUEST']._serialized_end=1681
+  _globals['_UPDATEPRESENCERESPONSE']._serialized_start=1683
+  _globals['_UPDATEPRESENCERESPONSE']._serialized_end=1707
+  _globals['_CHATSERVICE']._serialized_start=1710
+  _globals['_CHATSERVICE']._serialized_end=2518
 # @@protoc_insertion_point(module_scope)

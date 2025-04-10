@@ -36,13 +36,20 @@ final $typed_data.Uint8List loginRequestDescriptor = $convert.base64Decode(
 const LoginResponse$json = {
   '1': 'LoginResponse',
   '2': [
-    {'1': 'token', '3': 1, '4': 1, '5': 9, '10': 'token'},
+    {'1': 'access_token', '3': 1, '4': 1, '5': 9, '10': 'accessToken'},
+    {'1': 'refresh_token', '3': 2, '4': 1, '5': 9, '9': 0, '10': 'refreshToken', '17': true},
+    {'1': 'expires_in', '3': 3, '4': 1, '5': 3, '10': 'expiresIn'},
+  ],
+  '8': [
+    {'1': '_refresh_token'},
   ],
 };
 
 /// Descriptor for `LoginResponse`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List loginResponseDescriptor = $convert.base64Decode(
-    'Cg1Mb2dpblJlc3BvbnNlEhQKBXRva2VuGAEgASgJUgV0b2tlbg==');
+    'Cg1Mb2dpblJlc3BvbnNlEiEKDGFjY2Vzc190b2tlbhgBIAEoCVILYWNjZXNzVG9rZW4SKAoNcm'
+    'VmcmVzaF90b2tlbhgCIAEoCUgAUgxyZWZyZXNoVG9rZW6IAQESHQoKZXhwaXJlc19pbhgDIAEo'
+    'A1IJZXhwaXJlc0luQhAKDl9yZWZyZXNoX3Rva2Vu');
 
 @$core.Deprecated('Use sendMessageRequestDescriptor instead')
 const SendMessageRequest$json = {
@@ -51,13 +58,19 @@ const SendMessageRequest$json = {
     {'1': 'cid', '3': 1, '4': 1, '5': 9, '10': 'cid'},
     {'1': 'payload_type', '3': 2, '4': 1, '5': 9, '10': 'payloadType'},
     {'1': 'payload', '3': 3, '4': 1, '5': 12, '10': 'payload'},
+    {'1': 'temporary_message_id', '3': 4, '4': 1, '5': 9, '9': 0, '10': 'temporaryMessageId', '17': true},
+  ],
+  '8': [
+    {'1': '_temporary_message_id'},
   ],
 };
 
 /// Descriptor for `SendMessageRequest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List sendMessageRequestDescriptor = $convert.base64Decode(
     'ChJTZW5kTWVzc2FnZVJlcXVlc3QSEAoDY2lkGAEgASgJUgNjaWQSIQoMcGF5bG9hZF90eXBlGA'
-    'IgASgJUgtwYXlsb2FkVHlwZRIYCgdwYXlsb2FkGAMgASgMUgdwYXlsb2Fk');
+    'IgASgJUgtwYXlsb2FkVHlwZRIYCgdwYXlsb2FkGAMgASgMUgdwYXlsb2FkEjUKFHRlbXBvcmFy'
+    'eV9tZXNzYWdlX2lkGAQgASgJSABSEnRlbXBvcmFyeU1lc3NhZ2VJZIgBAUIXChVfdGVtcG9yYX'
+    'J5X21lc3NhZ2VfaWQ=');
 
 @$core.Deprecated('Use sendMessageResponseDescriptor instead')
 const SendMessageResponse$json = {

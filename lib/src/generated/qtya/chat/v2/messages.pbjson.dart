@@ -13,6 +13,25 @@ import 'dart:convert' as $convert;
 import 'dart:core' as $core;
 import 'dart:typed_data' as $typed_data;
 
+@$core.Deprecated('Use messageTypeDescriptor instead')
+const MessageType$json = {
+  '1': 'MessageType',
+  '2': [
+    {'1': 'UNKNOWN', '2': 0},
+    {'1': 'TEXT', '2': 2},
+    {'1': 'IMAGE', '2': 3},
+    {'1': 'VOICE', '2': 4},
+    {'1': 'CALL', '2': 5},
+    {'1': 'VIDEO', '2': 6},
+    {'1': 'FILE', '2': 7},
+  ],
+};
+
+/// Descriptor for `MessageType`. Decode as a `google.protobuf.EnumDescriptorProto`.
+final $typed_data.Uint8List messageTypeDescriptor = $convert.base64Decode(
+    'CgtNZXNzYWdlVHlwZRILCgdVTktOT1dOEAASCAoEVEVYVBACEgkKBUlNQUdFEAMSCQoFVk9JQ0'
+    'UQBBIICgRDQUxMEAUSCQoFVklERU8QBhIICgRGSUxFEAc=');
+
 @$core.Deprecated('Use chatMessageDescriptor instead')
 const ChatMessage$json = {
   '1': 'ChatMessage',
@@ -25,14 +44,18 @@ const ChatMessage$json = {
     {'1': 'reactions', '3': 6, '4': 3, '5': 11, '6': '.qtya.chat.v2.MessageReaction', '10': 'reactions'},
     {'1': 'deleted_at', '3': 7, '4': 1, '5': 11, '6': '.qtya.core.v1.ProtoTime', '9': 0, '10': 'deletedAt', '17': true},
     {'1': 'deleted_by', '3': 8, '4': 1, '5': 9, '9': 1, '10': 'deletedBy', '17': true},
-    {'1': 'message_type', '3': 9, '4': 1, '5': 9, '10': 'messageType'},
+    {'1': 'message_type', '3': 9, '4': 1, '5': 14, '6': '.qtya.chat.v2.MessageType', '10': 'messageType'},
     {'1': 'seen_at', '3': 10, '4': 1, '5': 11, '6': '.qtya.core.v1.ProtoTime', '9': 2, '10': 'seenAt', '17': true},
     {'1': 'attachments', '3': 11, '4': 3, '5': 11, '6': '.qtya.chat.v2.MessageAttachment', '10': 'attachments'},
+    {'1': 'temporary_message_id', '3': 12, '4': 1, '5': 9, '9': 3, '10': 'temporaryMessageId', '17': true},
+    {'1': 'delivered_at', '3': 13, '4': 1, '5': 11, '6': '.qtya.core.v1.ProtoTime', '9': 4, '10': 'deliveredAt', '17': true},
   ],
   '8': [
     {'1': '_deleted_at'},
     {'1': '_deleted_by'},
     {'1': '_seen_at'},
+    {'1': '_temporary_message_id'},
+    {'1': '_delivered_at'},
   ],
 };
 
@@ -44,10 +67,14 @@ final $typed_data.Uint8List chatMessageDescriptor = $convert.base64Decode(
     '9yZS52MS5Qcm90b1RpbWVSBnNlbnRBdBI7CglyZWFjdGlvbnMYBiADKAsyHS5xdHlhLmNoYXQu'
     'djIuTWVzc2FnZVJlYWN0aW9uUglyZWFjdGlvbnMSOwoKZGVsZXRlZF9hdBgHIAEoCzIXLnF0eW'
     'EuY29yZS52MS5Qcm90b1RpbWVIAFIJZGVsZXRlZEF0iAEBEiIKCmRlbGV0ZWRfYnkYCCABKAlI'
-    'AVIJZGVsZXRlZEJ5iAEBEiEKDG1lc3NhZ2VfdHlwZRgJIAEoCVILbWVzc2FnZVR5cGUSNQoHc2'
-    'Vlbl9hdBgKIAEoCzIXLnF0eWEuY29yZS52MS5Qcm90b1RpbWVIAlIGc2VlbkF0iAEBEkEKC2F0'
-    'dGFjaG1lbnRzGAsgAygLMh8ucXR5YS5jaGF0LnYyLk1lc3NhZ2VBdHRhY2htZW50UgthdHRhY2'
-    'htZW50c0INCgtfZGVsZXRlZF9hdEINCgtfZGVsZXRlZF9ieUIKCghfc2Vlbl9hdA==');
+    'AVIJZGVsZXRlZEJ5iAEBEjwKDG1lc3NhZ2VfdHlwZRgJIAEoDjIZLnF0eWEuY2hhdC52Mi5NZX'
+    'NzYWdlVHlwZVILbWVzc2FnZVR5cGUSNQoHc2Vlbl9hdBgKIAEoCzIXLnF0eWEuY29yZS52MS5Q'
+    'cm90b1RpbWVIAlIGc2VlbkF0iAEBEkEKC2F0dGFjaG1lbnRzGAsgAygLMh8ucXR5YS5jaGF0Ln'
+    'YyLk1lc3NhZ2VBdHRhY2htZW50UgthdHRhY2htZW50cxI1ChR0ZW1wb3JhcnlfbWVzc2FnZV9p'
+    'ZBgMIAEoCUgDUhJ0ZW1wb3JhcnlNZXNzYWdlSWSIAQESPwoMZGVsaXZlcmVkX2F0GA0gASgLMh'
+    'cucXR5YS5jb3JlLnYxLlByb3RvVGltZUgEUgtkZWxpdmVyZWRBdIgBAUINCgtfZGVsZXRlZF9h'
+    'dEINCgtfZGVsZXRlZF9ieUIKCghfc2Vlbl9hdEIXChVfdGVtcG9yYXJ5X21lc3NhZ2VfaWRCDw'
+    'oNX2RlbGl2ZXJlZF9hdA==');
 
 @$core.Deprecated('Use conversationDescriptor instead')
 const Conversation$json = {
