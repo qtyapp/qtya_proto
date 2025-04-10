@@ -7,7 +7,17 @@ package qtya.chat.v2;
 
 option go_package = "github.com/qtyapp/qtya_proto/qtya/chat/v2;chatv2";
 
+enum MessageType {
+    UNKNOWN = 0;
+    TEXT = 2;
+    IMAGE = 3;
+    VOICE = 4;
+    CALL = 5;
+    VIDEO = 6;
+    FILE = 7;
+}
 
+// ChatMessage is the message that is sent between the client and the server
 message ChatMessage {
     string message_id = 1;
     string conversation_id = 2;
@@ -17,9 +27,14 @@ message ChatMessage {
     repeated MessageReaction reactions = 6;
     optional qtya.core.v1.ProtoTime deleted_at = 7;
     optional string deleted_by = 8;
-    string message_type = 9;
+    MessageType message_type = 9;
     optional qtya.core.v1.ProtoTime seen_at = 10;
     repeated MessageAttachment attachments = 11;
+    // TemporaryMessageId is the temporary id of the message generated from the client. This
+    // is mostly used for messages that are sent from the client to the server, to identify
+    // the message on the client. This value is not stored on the server.
+    optional string temporary_message_id = 12;
+    optional qtya.core.v1.ProtoTime delivered_at = 13;
 }
 
 message Conversation {
