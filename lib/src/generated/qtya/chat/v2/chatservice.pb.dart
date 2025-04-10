@@ -16,22 +16,24 @@ import 'package:protobuf/protobuf.dart' as $pb;
 
 import 'messages.pb.dart' as $8;
 
+enum LoginRequest_LoginType {
+  refreshToken, 
+  credentials, 
+  notSet
+}
+
 /// LoginRequest is the request for login
 class LoginRequest extends $pb.GeneratedMessage {
   factory LoginRequest({
-    $core.String? username,
-    $core.String? password,
-    $core.bool? rememberMe,
+    LoginByRefreshTokenMessage? refreshToken,
+    LoginByCredentialsMessage? credentials,
   }) {
     final $result = create();
-    if (username != null) {
-      $result.username = username;
+    if (refreshToken != null) {
+      $result.refreshToken = refreshToken;
     }
-    if (password != null) {
-      $result.password = password;
-    }
-    if (rememberMe != null) {
-      $result.rememberMe = rememberMe;
+    if (credentials != null) {
+      $result.credentials = credentials;
     }
     return $result;
   }
@@ -39,10 +41,15 @@ class LoginRequest extends $pb.GeneratedMessage {
   factory LoginRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory LoginRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
+  static const $core.Map<$core.int, LoginRequest_LoginType> _LoginRequest_LoginTypeByTag = {
+    1 : LoginRequest_LoginType.refreshToken,
+    2 : LoginRequest_LoginType.credentials,
+    0 : LoginRequest_LoginType.notSet
+  };
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'LoginRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'qtya.chat.v2'), createEmptyInstance: create)
-    ..aOS(1, _omitFieldNames ? '' : 'username')
-    ..aOS(2, _omitFieldNames ? '' : 'password')
-    ..aOB(3, _omitFieldNames ? '' : 'rememberMe')
+    ..oo(0, [1, 2])
+    ..aOM<LoginByRefreshTokenMessage>(1, _omitFieldNames ? '' : 'refreshToken', subBuilder: LoginByRefreshTokenMessage.create)
+    ..aOM<LoginByCredentialsMessage>(2, _omitFieldNames ? '' : 'credentials', subBuilder: LoginByCredentialsMessage.create)
     ..hasRequiredFields = false
   ;
 
@@ -66,6 +73,134 @@ class LoginRequest extends $pb.GeneratedMessage {
   @$core.pragma('dart2js:noInline')
   static LoginRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<LoginRequest>(create);
   static LoginRequest? _defaultInstance;
+
+  LoginRequest_LoginType whichLoginType() => _LoginRequest_LoginTypeByTag[$_whichOneof(0)]!;
+  void clearLoginType() => clearField($_whichOneof(0));
+
+  @$pb.TagNumber(1)
+  LoginByRefreshTokenMessage get refreshToken => $_getN(0);
+  @$pb.TagNumber(1)
+  set refreshToken(LoginByRefreshTokenMessage v) { setField(1, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasRefreshToken() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearRefreshToken() => clearField(1);
+  @$pb.TagNumber(1)
+  LoginByRefreshTokenMessage ensureRefreshToken() => $_ensure(0);
+
+  @$pb.TagNumber(2)
+  LoginByCredentialsMessage get credentials => $_getN(1);
+  @$pb.TagNumber(2)
+  set credentials(LoginByCredentialsMessage v) { setField(2, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasCredentials() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearCredentials() => clearField(2);
+  @$pb.TagNumber(2)
+  LoginByCredentialsMessage ensureCredentials() => $_ensure(1);
+}
+
+/// LoginByRefreshTokenMessage is the request for login by refresh token. (Actually a refresh token flow)
+class LoginByRefreshTokenMessage extends $pb.GeneratedMessage {
+  factory LoginByRefreshTokenMessage({
+    $core.String? refreshToken,
+  }) {
+    final $result = create();
+    if (refreshToken != null) {
+      $result.refreshToken = refreshToken;
+    }
+    return $result;
+  }
+  LoginByRefreshTokenMessage._() : super();
+  factory LoginByRefreshTokenMessage.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory LoginByRefreshTokenMessage.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'LoginByRefreshTokenMessage', package: const $pb.PackageName(_omitMessageNames ? '' : 'qtya.chat.v2'), createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'refreshToken')
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  LoginByRefreshTokenMessage clone() => LoginByRefreshTokenMessage()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  LoginByRefreshTokenMessage copyWith(void Function(LoginByRefreshTokenMessage) updates) => super.copyWith((message) => updates(message as LoginByRefreshTokenMessage)) as LoginByRefreshTokenMessage;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static LoginByRefreshTokenMessage create() => LoginByRefreshTokenMessage._();
+  LoginByRefreshTokenMessage createEmptyInstance() => create();
+  static $pb.PbList<LoginByRefreshTokenMessage> createRepeated() => $pb.PbList<LoginByRefreshTokenMessage>();
+  @$core.pragma('dart2js:noInline')
+  static LoginByRefreshTokenMessage getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<LoginByRefreshTokenMessage>(create);
+  static LoginByRefreshTokenMessage? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get refreshToken => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set refreshToken($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasRefreshToken() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearRefreshToken() => clearField(1);
+}
+
+/// LoginByCredentialsMessage is the request for login by username and password
+class LoginByCredentialsMessage extends $pb.GeneratedMessage {
+  factory LoginByCredentialsMessage({
+    $core.String? username,
+    $core.String? password,
+    $core.bool? rememberMe,
+  }) {
+    final $result = create();
+    if (username != null) {
+      $result.username = username;
+    }
+    if (password != null) {
+      $result.password = password;
+    }
+    if (rememberMe != null) {
+      $result.rememberMe = rememberMe;
+    }
+    return $result;
+  }
+  LoginByCredentialsMessage._() : super();
+  factory LoginByCredentialsMessage.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory LoginByCredentialsMessage.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'LoginByCredentialsMessage', package: const $pb.PackageName(_omitMessageNames ? '' : 'qtya.chat.v2'), createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'username')
+    ..aOS(2, _omitFieldNames ? '' : 'password')
+    ..aOB(3, _omitFieldNames ? '' : 'rememberMe')
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  LoginByCredentialsMessage clone() => LoginByCredentialsMessage()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  LoginByCredentialsMessage copyWith(void Function(LoginByCredentialsMessage) updates) => super.copyWith((message) => updates(message as LoginByCredentialsMessage)) as LoginByCredentialsMessage;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static LoginByCredentialsMessage create() => LoginByCredentialsMessage._();
+  LoginByCredentialsMessage createEmptyInstance() => create();
+  static $pb.PbList<LoginByCredentialsMessage> createRepeated() => $pb.PbList<LoginByCredentialsMessage>();
+  @$core.pragma('dart2js:noInline')
+  static LoginByCredentialsMessage getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<LoginByCredentialsMessage>(create);
+  static LoginByCredentialsMessage? _defaultInstance;
 
   @$pb.TagNumber(1)
   $core.String get username => $_getSZ(0);
@@ -95,7 +230,7 @@ class LoginRequest extends $pb.GeneratedMessage {
   void clearRememberMe() => clearField(3);
 }
 
-/// LoginResponse
+/// LoginResponse is the response for login
 class LoginResponse extends $pb.GeneratedMessage {
   factory LoginResponse({
     $core.String? accessToken,

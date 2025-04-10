@@ -17,6 +17,38 @@ import 'dart:typed_data' as $typed_data;
 const LoginRequest$json = {
   '1': 'LoginRequest',
   '2': [
+    {'1': 'refresh_token', '3': 1, '4': 1, '5': 11, '6': '.qtya.chat.v2.LoginByRefreshTokenMessage', '9': 0, '10': 'refreshToken'},
+    {'1': 'credentials', '3': 2, '4': 1, '5': 11, '6': '.qtya.chat.v2.LoginByCredentialsMessage', '9': 0, '10': 'credentials'},
+  ],
+  '8': [
+    {'1': 'login_type'},
+  ],
+};
+
+/// Descriptor for `LoginRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List loginRequestDescriptor = $convert.base64Decode(
+    'CgxMb2dpblJlcXVlc3QSTwoNcmVmcmVzaF90b2tlbhgBIAEoCzIoLnF0eWEuY2hhdC52Mi5Mb2'
+    'dpbkJ5UmVmcmVzaFRva2VuTWVzc2FnZUgAUgxyZWZyZXNoVG9rZW4SSwoLY3JlZGVudGlhbHMY'
+    'AiABKAsyJy5xdHlhLmNoYXQudjIuTG9naW5CeUNyZWRlbnRpYWxzTWVzc2FnZUgAUgtjcmVkZW'
+    '50aWFsc0IMCgpsb2dpbl90eXBl');
+
+@$core.Deprecated('Use loginByRefreshTokenMessageDescriptor instead')
+const LoginByRefreshTokenMessage$json = {
+  '1': 'LoginByRefreshTokenMessage',
+  '2': [
+    {'1': 'refresh_token', '3': 1, '4': 1, '5': 9, '10': 'refreshToken'},
+  ],
+};
+
+/// Descriptor for `LoginByRefreshTokenMessage`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List loginByRefreshTokenMessageDescriptor = $convert.base64Decode(
+    'ChpMb2dpbkJ5UmVmcmVzaFRva2VuTWVzc2FnZRIjCg1yZWZyZXNoX3Rva2VuGAEgASgJUgxyZW'
+    'ZyZXNoVG9rZW4=');
+
+@$core.Deprecated('Use loginByCredentialsMessageDescriptor instead')
+const LoginByCredentialsMessage$json = {
+  '1': 'LoginByCredentialsMessage',
+  '2': [
     {'1': 'username', '3': 1, '4': 1, '5': 9, '10': 'username'},
     {'1': 'password', '3': 2, '4': 1, '5': 9, '10': 'password'},
     {'1': 'remember_me', '3': 3, '4': 1, '5': 8, '9': 0, '10': 'rememberMe', '17': true},
@@ -26,11 +58,11 @@ const LoginRequest$json = {
   ],
 };
 
-/// Descriptor for `LoginRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List loginRequestDescriptor = $convert.base64Decode(
-    'CgxMb2dpblJlcXVlc3QSGgoIdXNlcm5hbWUYASABKAlSCHVzZXJuYW1lEhoKCHBhc3N3b3JkGA'
-    'IgASgJUghwYXNzd29yZBIkCgtyZW1lbWJlcl9tZRgDIAEoCEgAUgpyZW1lbWJlck1liAEBQg4K'
-    'DF9yZW1lbWJlcl9tZQ==');
+/// Descriptor for `LoginByCredentialsMessage`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List loginByCredentialsMessageDescriptor = $convert.base64Decode(
+    'ChlMb2dpbkJ5Q3JlZGVudGlhbHNNZXNzYWdlEhoKCHVzZXJuYW1lGAEgASgJUgh1c2VybmFtZR'
+    'IaCghwYXNzd29yZBgCIAEoCVIIcGFzc3dvcmQSJAoLcmVtZW1iZXJfbWUYAyABKAhIAFIKcmVt'
+    'ZW1iZXJNZYgBAUIOCgxfcmVtZW1iZXJfbWU=');
 
 @$core.Deprecated('Use loginResponseDescriptor instead')
 const LoginResponse$json = {

@@ -10,12 +10,25 @@ option go_package = "github.com/qtyapp/qtya_proto/qtya/chat/v2;chatv2";
 
 // LoginRequest is the request for login
 message LoginRequest {
+    oneof login_type {
+        LoginByRefreshTokenMessage refresh_token = 1;
+        LoginByCredentialsMessage credentials = 2;
+    }
+}
+
+// LoginByRefreshTokenMessage is the request for login by refresh token. (Actually a refresh token flow)
+message LoginByRefreshTokenMessage {
+    string refresh_token = 1;
+}
+
+// LoginByCredentialsMessage is the request for login by username and password
+message LoginByCredentialsMessage {
     string username = 1;
     string password = 2;
     optional bool remember_me = 3;
 }
 
-// LoginResponse
+// LoginResponse is the response for login
 message LoginResponse {
     // AccessToken is the JWT access token
     string access_token = 1;
